@@ -1,7 +1,15 @@
+#！
+
 #变量
-# a=100087
-# print(type(a))
-#
+#a=100087
+#print(id(a),type(a),a)   驼峰体和下划线 （推荐使用下划线）
+#常量的意义---将变量名全部携程大写的，提示为常量，但是其实还是可以修改的
+
+#程序交互：
+#oython3中，所有input都是string类型的，
+#python2中输入什么类型就是什么类型，raw_input等于python3中的input
+#注意要想要 int 类型的使用 int(input(''))
+
 # x = 1 - 2j
 # print(x.imag)
 # print(x.real)
@@ -18,7 +26,9 @@
 # '''
 # print(msg)
 #
-#字符串的加法和乘法运算，只有字符串没有字符的概念
+# 字符串的加法（其实就是字符串拼接，但是只有都是字符串类型的才能拼接，str(%d)
+# 乘法运算：其实就是拼接
+# 只有字符串没有字符的概念
 #
 # name = 'egon'
 # age = '18'
@@ -73,8 +83,13 @@
 # # age = input('youe age: ')
 #
 # print('your name is %s and your age is %s'%(name,age))
+
+#布尔类型：
+
+
 #
-#打印格式 %s %d 有区别，%s 可以接受任意字符串和数字，而%d只能接受数字，使用的时候要注意默认的规则，比如input都是字符串。
+#打印格式：
+# %s %d 有区别，%s 可以接受任意字符串和数字，而%d只能接受数字，使用的时候要注意默认的规则，比如input都是字符串。
 # name=input('name: ')
 # age=input('age: ')
 # sex=input('sex: ')
@@ -86,6 +101,13 @@
 # print('job  : %s' %job)
 # print('--------- end-----------')
 
+
+#运算
+#/ // %  除法的三个特性。
+
+
+
+#boolean 类型的值  not 就是取反的意思，
 
 
 #if 判断的使用  if  elif  else  注意   ：
@@ -178,6 +200,8 @@
 #     break
 
 #
+
+#加tag 的话这样就不不用写多个 break，一个 tag就将全部的循环条件都置为 False，这样所有的循环就结束掉了
 # tag=True
 # while tag:
 #     inp_name=input('name: ')
@@ -222,7 +246,7 @@
 
 
 
-#练习题：
+#八个 练习题：
 
 # count=1
 # while count<=10:
@@ -311,5 +335,77 @@
 #     for j in range(1,i+1):
 #         print('%s * %s=%s is :' %(i,j,i*j),end=' ')
 #     print()
+
+
+#作业:
+user=['test','test1','test2','test3']
+password=['test','1test','2test','3test']
+count=0
+while True:
+    if count > 2:
+        print('''
+  你操作太频繁,请稍后再试!
+        ''')
+        break
+    name = input('your name: ')
+    pwd = input('your password: ')
+    if  not name in user:
+        print('用户名不存在')
+        continue
+    id=user.index(name)
+    if  pwd == password[id]:
+        print('欢迎登陆！')
+        break
+    else:
+        print('用户名或者密码错误！请重试')
+        count+=1
+#作业进阶：
+user=['test','test1','test2','test3']
+password=['test','1test','2test','3test']
+count=0
+while True:
+    name = input('your name: ')
+    pwd = input('your password: ')
+    with open('denylogin.txt', 'r')  as file:
+        denylist = file.read()
+        if name in denylist:
+            print('你的账户已经锁定，不能登陆，请联系管理员！')
+            break
+    if  not name in user:
+        print('用户名不存在')
+        continue
+    id=user.index(name)
+    if  pwd == password[id]:
+        print('欢迎登陆！')
+        break
+    else:
+        print('用户名或者密码错误！请重试')
+        count+=1
+    if count > 2:
+        print('''你操作太频繁,账户已经锁定''')
+        with open('denylogin.txt','a') as  file :
+            file.write('%s' %name+'\n')
+            break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# user=['test','test1','test2','test3']
+# password=['test','1test','2test','3test']
+# print(user.index('test3'))
+#
+
 
 
