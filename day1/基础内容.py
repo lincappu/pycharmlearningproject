@@ -85,8 +85,38 @@
 #
 # print('your name is %s and your age is %s'%(name,age))
 
-#布尔类型：
+#元组类型：
+#元组和列表相似，但是不能被修改，用小括号标示。
+tup1 = ('f','l','s')
+tup2 = (1,2,3)
+tup3 = "a","b","c","d"
 
+#创建空元组
+tup = ()
+#元组中只包含一个元素时，需要在元素后面加逗号
+tup = (52,)
+#和列表相似，使用下标引用，可以进行截取，组合。
+#访问:顾头不顾尾
+print(tup1[1])
+print(tup3[1:2])
+print(tup1[1:])
+#修改元组：拼接和相乘：
+print(tup1+tup2)
+print(3*tup2)
+#del tup1  手动删除元组
+#元组运算符
+print(len((1,2,3)))
+print(2 in (1,2,3))
+#元组的内置函数
+print(min((1,2,3)))
+print(max((1,2,3)))
+#元组和列表的转换
+print(tuple("nihao"))
+print(tuple(list("wobuhao")))
+
+
+#布尔类型：
+#not这个特殊
 
 #
 #打印格式：
@@ -387,19 +417,6 @@
 #         with open('denylogin.txt','a') as  file :
 #             file.write('%s' %name+'\n')
 #             break
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
