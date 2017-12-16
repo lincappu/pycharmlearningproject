@@ -1,6 +1,7 @@
 #two by myself
 /.idea
 .idea/
+.DS_Store
 
 #following is copy from githubignore
 
