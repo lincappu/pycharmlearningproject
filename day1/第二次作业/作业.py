@@ -1,5 +1,5 @@
-# !/usr/bin/env python3
-# -*- coding:utf-8 -*-
+# !/user/bin/env python3
+# -*-   coding:ustf-8 -*_
 # 第二次作业：
 # 1.三级菜单
 menu = {
