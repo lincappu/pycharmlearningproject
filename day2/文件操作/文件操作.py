@@ -50,19 +50,28 @@
 
 # 常见的操作方法:
 # 自身属性
-# f.close()
+# 文件打开模式为文本代表读取3个字符，为 b 模式代表读取3个字节。光标移动都是以字节为单位。
+# seek  偏移设置该文件的当前位置，参数是可选的，有三种移动方式 0 1 2，0 是绝对定位，定位到开头，1，是相对定位当前位置，2定位于文件末尾。
+# 其中1、2必须在 b 模式下，但无论哪种模式下都是以字节为单位。
+# truncate 是截断文件，不能以 w w+代开，只能以 r+ a+ a 打开。
+# f.cose()
 # f.name
-# f.seek(0) #将文件位置定位到第一行，第一个字节。
+# f.seek(offfset,whence=0) #将文件位置定位到第一行，第一个字节。
+# f.truncate()  # 只能以a模式
 # f.tell() #返回文件读的位置，注意加上换行符的个数
+# 上面这三个只有在文本模式下才是字符，其余都是字节
+# f.flush() # 写一行刷新一行
+
 
 
 # 读：
+# with open('test.txt','r',encoding='utf-8') as f:
+
 # f.read(4) #默认是读全部内容，n表示读多少个字节。
 # f.read(6) #这个是接上次的继续读
 # f.readable() # 文件是否可读
-# f.readline(n) #一次读一行，或者 n bytes
+# f.readline(n) #一次读一行，或者 一行的n bytes
 # f.readlines() #读取全部的文件内容,一行显示。
-
 
 # 遍历文件:
 
@@ -73,8 +82,7 @@
 # print(f.readline(),end='')
 
 
-
-# 读了全部
+# 读了全部，但是是一行一行的显示
 # for line in f.readlines():
 #     print(line,end='')
 #
@@ -87,11 +95,11 @@
 #     print(index)
 # print(line,end='')
 
-# 读了全部
+# 这个是逐行读
 # for line in f:
 #     print(line,end='')
 
-# 只读了前三行
+# 逐行读
 # count = 0
 # for line in f:
 #     if count == 2:
@@ -101,6 +109,38 @@
 
 # f.close()
 
+
+# 一行一行读的三种方法：
+# 第一种：
+# f = open("foo.txt")  # 返回一个文件对象
+# line = f.readline()  # 调用文件的 readline()方法
+# while line:
+#     print
+#     line,  # 后面跟 ',' 将忽略换行符
+#     print(line, end = '')　      # 在 Python 3 中使用
+    # line = f.readline()
+#
+# f.close()
+#
+# 第二种：
+# for line in open("foo.txt"):
+#     print line,
+#
+# 第三种：
+# f = open("c:\\1.txt","r")
+# lines = f.readlines()      #读取全部内容 ，并以列表方式返回
+# for line in lines
+#     print line
+#
+# 一次性读所有文件的方法：
+# file_object = open('thefile.txt')
+# try:
+#      all_the_text = file_object.read()
+# finally:
+#      file_object.close()
+
+
+
 # 写：
 # f=open('test.txt',mode='w',encoding='utf-8')
 # f.write('111\n')
@@ -109,11 +149,41 @@
 # f.writelines(['444\n','555\n','666\n'])
 # print(f.writable())
 
+
 # a 追加写模式,不存在则创建，存在则追加
 # f=open('test.txt','a',encoding='utf8')
 # f.write('777\n')
 # f.writelines(['888\n','999\n'])
 # print(f.writable())
-# print(f.readable())
 #
-# 关闭
+
+# 二进制文件的读取：
+# 二进制文件和文本文件的区别：
+# 文本文件取出来的都是字符串类型的数据，字符类型的数据就需要考虑当时是按什么存进去的就要以什么方式的编码取出来，所以就是需要制定字符编码。mode='rt'
+# 而二进制文件都是按照 bytes 类型读的，不需要按照制定类型。也不能制定，会报错。
+
+# with open('bz.jpg','rb') as f:
+#     print(f.read())
+#     print(f.read().decode('utf-8'))  # 这步就不能进行操作，因为只有原来是字符串类型的 encode 成 bytes 类型，才能进行 decode，原来是二进制
+#                                        类型的则不能进行转码。
+# 用二进制方式可以打开文本文件： 可以读出来，但是是最原始的格式，没有经过最原始的转码,这是对汉字来说是的，对于字符来说，你看到的直接就是他本身。
+# with open('test.txt','rb') as f:      # 由于 python3默认字符串就是 unicode 类型，所以 bytes 类型是 encode 成 bytes 类型。
+#     data=f.read()
+#     print(data)
+# 字符类型的数据编码后也可以使用 decode 重新编码，这样你就可以看见，但这只针对字符类型，对于二进制类型就没有这种效果。
+# with open('test.txt','rb') as f:
+#     data=f.read()
+#     print(data.decode('utf-8')) # 这步是 decode的操作，因为他原来就就是 unicode 类型的。
+
+# 以 bytes 类型操作文件，
+# with open('d.txt','wb') as f:
+#     data=f.write(b'\xe4\xbd\xa0\xe5\xa5\xbd\n')
+#     print(data)
+
+# 这个有疑问？
+# with open('c.txt','wb') as f:
+#     f.w
+
+
+
+

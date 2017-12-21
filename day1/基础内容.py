@@ -886,19 +886,19 @@
 
 
 
-good = {
-    '1':{'apple': 100},
-    '2':{'tesla': 100},
-    '3':{'mac': 100},
-    '4':{'lenovo': 100},
-    '5':{'chicken': 100},
-}
-
-
-
-print(list(good['1'])[0])
+# good = {
+#     '1':{'apple': 100},
+#     '2':{'tesla': 100},
+#     '3':{'mac': 100},
+#     '4':{'lenovo': 100},
+#     '5':{'chicken': 100},
+# }
+#
+#
+#
+# print(list(good['1'])[0])
 # print(mc)
-print(good['1']['apple'])
+# print(good['1']['apple'])
 # x={'a':'10'}
 # b=(list(x))
 # print(b)
