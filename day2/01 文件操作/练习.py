@@ -34,22 +34,22 @@
 # 2.不同的读方式
 # 文件的读取及修改方式，是全部还是一行一样的
 # 全部：
-import os
-with open('test.txt') as read_f, open('test.txt.swap', 'w') as write_f:
-    data = read_f.read()
-    data = data.replace('你好', '你们好')
-
-    write_f.write(data)
-
-os.remove('test.txt')
-os.rename('test.txt.swap', 'test.txt')
+# import os
+# with open('test.txt') as read_f, open('test.txt.swap', 'w') as write_f:
+#     data = read_f.read()
+#     data = data.replace('你好', '你们好')
+#
+#     write_f.write(data)
+#
+# os.remove('test.txt')
+# os.rename('test.txt.swap', 'test.txt')
 
 # 一行一行的读进内存
-import os
-with open('test.txt') as read_f, open('test.txt.swap', 'w') as write_f:
-    for line in read_f:
-        line = line.replace('你好','你们好')
-        write_f.write(line)
-
-os.remove('test.txt')
-os.rename('test.txt.swap','test.txt')
+# import os
+# with open('test.txt') as read_f, open('test.txt.swap', 'w') as write_f:
+#     for line in read_f:
+#         line = line.replace('你好','你们好')
+#         write_f.write(line)
+#
+# os.remove('test.txt')
+# os.rename('test.txt.swap','test.txt')

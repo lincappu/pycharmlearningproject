@@ -7,6 +7,7 @@
 
 import  time
 import  sys
+import os
 
 if len(sys.argv) != 2:
     print('Usage: tailf  tail_file')
@@ -16,7 +17,7 @@ t_file = sys.argv[1]
 if os.path.exists(t_file):
     if os.path.isfile(t_file):
         if os.access(t_file, mode=os.R_OK):
-            with open(PATH, mode='rb') as f:
+            with open(t_file, mode='rb') as f:
                 f.seek(0, 2)
                 while True:
                     line = f.readline()
