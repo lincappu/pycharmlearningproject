@@ -244,11 +244,15 @@
 # del stu[0]
 # print(stu)
 #
-# stu.remove('wupeiqi')  #remove 只是单纯的是难处，不会返回删除的值，按值来删除，
+# stu.remove('wupeiqi')  #remove 只是单纯的是删除，不会返回删除的值，按值来删除，
 # print(stu)
 #
-# res=stu.pop(1)  #是按照索引来删除，默认是从末尾删除。
+# res=stu.pop(1)  #是按照索引来删除，默认是从末尾删除,有返回值，
 # print(stu,res)
+
+# del stu[1]   # 按照索引删除，没有返回值，并且这是个命令实现的，
+# print(stu)
+
 
 # 其他操作:
 # stu=['alex','wupeiqi','egon','linhaifeng','ela']
@@ -309,6 +313,7 @@
 # print(l.pop(0))
 # print(l.pop(0))
 # print(l.pop(0))
+
 
 # l=[]
 # l.insert(0,'fist')
