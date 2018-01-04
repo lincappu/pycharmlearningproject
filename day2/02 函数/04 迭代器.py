@@ -2,14 +2,14 @@
 # _*_coding _*_
 
 # 什么是迭代器：
-# 迭代是一个重复的过程，每次结果都是上次的结果来的。
+# 迭代是一个重复的过程，每次结果都是基于上次的结果来的。
 # 针对没有索引的数据类型，必须有一种不依赖索引的取值方式，
 
 # 可迭代对象：只要对象有__iter__方法就是可迭代对象。
-# 目前所学的所有类型都是可迭代对象。
+# 目前所学的所有类型都是可迭代对象。数值类型不是
 # 迭代器对象：既要有__iter__对象，也要有__next__方法。
 # 可迭代度对象
-# 'hello'.__iter__()  'hello'.__
+# 'hello'.__iter__()
 # [1,2].__iter__()
 # (1,2).__iter__()
 # {'a':1}.items()
@@ -26,9 +26,9 @@
 # print(next(dic_iter))
 # print(next(dic_iter))
 
-# 对于文件来说，就不用那部分的转换。
+# 对于文件来说，就不用那部分的转换。但是为了格式统一，还是有__iter__方法
 #
-# import  os
+import  os
 # with open('test.txt','r',encoding='utf-8') as f:
 #     print(f.__next__(),end='')
 #     print(f.__next__(),end='')
@@ -36,7 +36,7 @@
 #     print(next(f),end='')
 #     print(next(f),end='')
 #     print(next(f),end='')
-
+# 由此可以看出 f.__iter__ == next(f)
 
 # dic = {'a': 1, 'b': 2, 'c': 3}
 # dic_iter = dic.__iter__()
@@ -46,11 +46,10 @@
 #     except StopIteration:
 #         break
 
-# 迭代器的作用就就不依赖索引循环取值，利用数据类型本身的方法，并且是数据类型本身的属性。这个屏蔽了数据类型。
-# 所有的取值方法都是一样的
+# 迭代器的作用就就不依赖索引循环取值，利用数据类型本身的方法，这个就屏蔽了数据类型。所有的取值方法都是一样的
 
-# for 循环会将自动将可迭代对象转换为迭代器对象。
-# l=[1,2,3,4,5,6,7,8,9] #
+# for 循环会将自动将可迭代对象转换为迭代器对象，并且遇到报错自动停止
+# l=[1,2,3,4,5,6,7,8,9]
 # for i in l:
 #     print(i)
 
@@ -58,7 +57,7 @@
 
 # 迭代器的优点：
 # 1.提供一种统一的取值方式，
-# 2.更加节省内存空间。 next的时候才会去一次值。
+# 2.更加节省内存空间。 next的时候才会去一次值，而不是将值一次性全部取出。
 #
 # 缺点：
 # 一次取值，只能往后不能往前取。且没法取特定的值。
@@ -67,18 +66,22 @@
 # 如果有个很大的对象，最好变成一个迭代器对象，这样可以以一次一次的取值。
 
 
-# 判断是不是可迭代对象：
+# 判断是不是可迭代对象和迭代器
 # from collections import  Iterable,Iterator
 # print(isinstance('hellp',Iterable))
 # print(isinstance('hellp',Iterator))
+# string='hello'
+# s=string.__iter__()
+# print(isinstance(s,Iterator))
 
-# 迭代器的应用形式：生成器。
-# 生成器就是迭代器。
+
+
+# 迭代器的应用形式：生成器,生成器就是迭代器。
 
 
 # 只要函数内部出现 yield 关键字。那该么在调用该函数，将不会立即执行该函数，会得到一个结果，该结果就是生成器对象。
 
-#
+
 # def func():
 #     print('a')
 #     yield 1
@@ -93,7 +96,7 @@
 # g=next(f)
 # print(g)
 # print(f.__next__())
-
+#
 # yield功能
 # 1.提供一种自定义迭代器的方法。
 # 2.可以返回多次值。
@@ -134,7 +137,7 @@
 # g=grep('404',tail('access.log'))
 # for line in g:
 #     print(line)
-
+#
 
 
 
@@ -154,8 +157,8 @@
 # next(g)==g.send(None)
 #
 # try:
-#     g.send(None)
-#     g.send('骨头')
+#     g.send(None)  # 生成器第一次必须 send一个 None.
+#      g.send('骨头')
 #     print(g.send('shitou'))
 #     print(g.send('shitou'))
 #     print(g.send('shitou'))
@@ -165,19 +168,54 @@
 #     g.send('shitou')
 # except StopIteration:
 #     exit(1)
+
+
+
+# 代码赏析：循环取值
+
+# 1.用 for 循环实现：
+# def fu nc():
+#    for i in range(10):
+#         print('1')
+#         return i
+
+
+# print(func())
+# 这两种方式都可以，但是为了格式统一，有返回值的类型，统一用参数接收
+# res=func()
+# print(res)
+
+# f=func()
+# print(type(func))
+# print(type(func()))
+# print(type(f))
+# print(id(func))
+# print(id(func()))
+# print(id(f))
+# print(f.__next__())
+# res=next(f)
+# print(res)
 #
+# 主要的思想：
+#     如果用 return 做，由于 return 只能返回一次值，然后就结束了，所以他不可能进行多次取值，也没有所谓的生成器的概念。他返回的是第一个数值
 
 
 
+# 2.用生成器实现：
 
+# 通过for 循环来创建生成器，
+# l=[i for i in range(10)]
+# print(l)
 
+# 通过 yield 关键字来创建生成器：
+def func():
+    for i in range(19):
+        yield i
 
-
-
-
-
-
-
+f=func()
+print(f)
+print(func())
+print(f.__next__())
 
 
 

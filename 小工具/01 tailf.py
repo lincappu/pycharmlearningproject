@@ -3,7 +3,7 @@
 # Author： fls
 # Date: 20171220
 # Description: 这是文件操作的进行 tailf 操作。
-# Ex: python tailf.py filename
+# Ex: python 01 tailf.py filename
 
 import  time
 import  sys

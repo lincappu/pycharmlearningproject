@@ -23,20 +23,20 @@
 #         print(abs_file_path)
 
 
-import os
-import sys
-
-file = sys.argv[1]
-pattern = sys.argv[2]
-
-
-def init(func):
-    def inner(*args, **kwargs):
-        g = func(*args, **kwargs)
-        next(g)
-        return g
-
-    return inner
+# import os
+# import sys
+#
+# file = sys.argv[1]
+# pattern = sys.argv[2]
+#
+#
+# def init(func):
+#     def inner(*args, **kwargs):
+#         g = func(*args, **kwargs)
+#         next(g)
+#         return g
+#
+#     return inner
 
 
 def search(abs_file_path, target):

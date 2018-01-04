@@ -3,7 +3,7 @@
 # Author： fls
 # Date: 20171220
 # Description: 这是文件操作的进行 cp 操作。
-# Ex:   python cp.py   source_file  target_file
+# Ex:   python 01 cp.py   source_file  target_file
 
 import os
 import sys
