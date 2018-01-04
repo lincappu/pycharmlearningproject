@@ -16,7 +16,7 @@
 
 # import  os
 #
-# g=os.walk(r'/Users/FLS/Downloads/pycharmlearningproject/day2/02 函数/a')
+# g=os.walk(r'/Users/FLS/Downloads/pycharmlearningproject/day2/02 function/a')
 # for dirname,_,files in g:
 #     for file in files:
 #         abs_file_path='%s/%s' %(dirname,file)
