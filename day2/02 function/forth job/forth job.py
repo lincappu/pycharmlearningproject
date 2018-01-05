@@ -2,4 +2,3 @@
 # _*_coding:utf-8_*_
 
 
-print('from import module')
