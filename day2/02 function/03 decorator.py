@@ -111,32 +111,32 @@
 
 
 # 加参数：
-# import time
-#
-#
-# def timmer(func):
-#     def inner(*args,**kwargs):
-#         star_time = time.time()
-#         func(*args,**kwargs)
-#         stop_time = time.time()
-#         print('run time is :[%s]' % (stop_time - star_time))
-#
-#     return inner
-#
-#
-# @timmer  # index =timmer(index)
-# def index():
-#     time.sleep(3)
-#     print('welcome to index page')
-#
-# @timmer
-# def home(name):
-#     time.sleep(1)
-#     print('welcome to %s page' %(name))
-#
-#
-# index()
-# home('egon')
+import time
+
+
+def timmer(func):
+    def inner(*args,**kwargs):
+        star_time = time.time()
+        func(*args,**kwargs)
+        stop_time = time.time()
+        print('run time is :[%s]' % (stop_time - star_time))
+
+    return inner
+
+
+@timmer  # index =timmer(index)
+def index():
+    time.sleep(3)
+    print('welcome to index page')
+
+@timmer
+def home(name):
+    time.sleep(1)
+    print('welcome to %s page' %(name))
+
+
+index()
+home('egon')
 
 # 原始函数有返回值+函数属性转移
 
