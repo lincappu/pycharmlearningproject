@@ -1,14 +1,10 @@
 # !/usr/bin/env python3
 # _*_conding:utf-8_*_
 
-# import sys
-# sys.path.append(r'/Users/FLS/Downloads/pycharmlearningproject/practice/file')
+#常规的使用
+import sys
+sys.path.append(r'/Users/FLS/Downloads/pycharmlearningproject/practice/file')
 # print(sys.path)
-
-
-
-
-
 
 
 
@@ -665,23 +661,261 @@ import  pprint
 # pprint()格式化一个对象，并把它写至一个数据流，这个数据流作为参数传入（或者是默认的sys.stdout）
 # 注意为什么第二个字典中会显示一竖列，因为pprint打印支持8个对象以上的竖列打印
 
-
 # 2.格式化：pformat
 # pdata=pprint.pformat(data)
 # print(pdata)
 # 其实就是讲数据格式化但是不输出。
 
-
 # 3.限制深度:
 # pprint.pprint(data,depth=2)
-
 
 # 4.限制宽度：格式化文件的默认输出宽度是80列
 # pprint.pprint(data,width=5)
 # pprint.pprint(data,width=200)
 
-
 # 练习：
 # import sys
 # print(sys.path)
 # pprint.pprint(sys.path,indent=4)
+
+
+
+
+
+
+
+
+
+
+
+
+# logging 模块：
+
+# 1.简单打印日志信息到终端：
+# import  logging
+
+# print(logging.debug('debug'))
+# print(logging.info('info'))
+# print(logging.warning('warning'))
+# print(logging.error('error'))
+# print(logging.critical('critical'))
+# 两个问题需要注意：
+# 1.默认的 logger，root
+# 2.默认的级别，warning
+
+
+# 2.灵活配置日志级别、内容、位置：
+# import  logging
+#
+# logging.basicConfig(
+#     format='%(asctime)s %(name)s %(module)s [%(filename)s:%(lineno)s]  %(levelname)s ：%(message)s',
+#     filename='file/access.log',
+#     filemode='a',
+#     datefmt='%Y/%m/%d% %H:%m:%S',
+#     level=logging.DEBUG
+# )
+#
+# logging.debug('debug message')
+# logging.info('info message')
+# logging.warning('warning message')
+# logging.error('error message')
+# logging.critical('critical message')
+
+# 3.logging 对象：logger filter handler formatter
+import  logging
+#
+# logger=logging.getLogger()
+#
+# logger1=logging.getLogger('mylogger')
+# logger1.setLevel(logging.DEBUG)
+# logger1和 logger2绑定的是同一个logger，name才是唯一的，
+# logger2=logging.getLogger('mylogger')
+# logger2.setLevel(logging.INFO)
+#
+# logger3=logging.getLogger('mylogger.child1')
+# logger3.setLevel(logging.DEBUG)
+#
+# logger4=logging.getLogger('mylogger.child1.child2')
+# logger4.setLevel(logging.DEBUG)
+
+# logger5=logging.getLogger('mylogger.child1.child2.child3')
+# logger5.setLevel(logging.DEBUG)
+#
+#
+# h1=logging.StreamHandler()
+# h2=logging.FileHandler('file/test.logs')
+#
+#
+# logger.addHandler(h1)
+# logger.addHandler(h2)
+#
+#
+# logger1.addHandler(h1)
+# logger1.addHandler(h2)
+#
+# logger2.addHandler(h1)
+# logger2.addHandler(h2)
+#
+# logger3.addHandler(h1)
+# logger3.addHandler(h2)
+#
+# logger4.addHandler(h1)
+# logger4.addHandler(h2)
+#
+# logger5.addHandler(h1)
+# logger5.addHandler(h2)
+#
+#
+# logger.debug('logger debug message')
+# logger.info('logger info message')
+# logger.warning('logger warning message')
+# logger.error('logger error message')
+# logger.critical('logger critical message')
+#python默认的 logger，注意级别。
+
+
+# logger1.debug('logger1 debug message')
+# logger1.info('logger1 info message')
+# logger1.warning('logger1 warning message')
+# logger1.error('logger1 error message')
+# logger1.critical('logger1 critical message')
+# 这两个是其实显示的结果是一样的。
+# logger2.debug('logger2 debug message')
+# logger2.info('logger2 info message')
+# logger2.warning('logger2 warning message')
+# logger2.error('logger2 error message')
+# logger2.critical('logger2 critical message')
+#
+#
+# logger3.debug('logger3 debug message')
+# logger3.info('logger3 info message')
+# logger3.warning('logger3 warning message')
+# logger3.error('logger3 error message')
+# logger3.critical('logger3 critical message')
+# # 首先本身有一遍，然后发给 child1，然后发给父亲 mylogger，这个有两遍
+#
+#
+# logger4.debug('logger4 debug message')
+# logger4.info('logger4 info message')
+# logger4.warning('logger4 warning message')
+# logger4.error('logger4 error message')
+# logger4.critical('logger4 critical message')
+# # 四遍
+#
+#
+# logger5.debug('logger5 debug message')
+# logger5.info('logger5 info message')
+# logger5.warning('logger5 warning message')
+# logger5.error('logger5 error message')
+# logger5.critical('logger5 critical message')
+# # 五遍
+
+# 第二个例子：完整的例子：
+# import  logging
+# '''
+# critical 50
+# error 40
+# warning 30
+# info 20
+# debug 10
+#        0
+# '''
+
+# 1.生成 logger 对象，
+# logger=logging.getLogger(__file__)
+
+# 2.filter对象，这个基本不用
+
+# 3.创建handler 对象，接受logger 对象传来的日志，然后打印
+# h1=logging.FileHandler('file/t1.log')
+# h2=logging.FileHandler('file/t2.log')
+# h3=logging.StreamHandler()
+#
+# 4.创建formatter 对象，控制 handler 的输出格式
+# f1=logging.Formatter('%(asctime)s - %(name)s - %(levelname)s -%(module)s:  %(message)s',datefmt='%Y-%m-%d %H:%M:%S %p',)
+# f2=logging.Formatter('%(asctime)s :  %(message)s',datefmt='%Y-%m-%d %H:%M:%S %p',)
+# f3=logging.Formatter('%(name)s %(message)s',)
+
+# 5.为 handler 绑定 formatter对象
+# h1.setFormatter(f1)
+# h2.setFormatter(f2)
+# h3.setFormatter(f3)
+
+# 6.将 handler 绑定给 logger 对象
+# logger.addHandler(h1)
+# logger.addHandler(h2)
+# logger.addHandler(h3)
+# logger.setLevel(logging.DEBUG)
+
+# 测试
+# logger.debug('debug')
+# logger.info('info')
+# logger.warning('warning')
+# logger.error('error')
+# logger.critical('critical')
+
+
+# 官网学习：
+# import logging
+
+# 1.cli 写法
+# logging.warn('watch out')
+
+# 2.简单的配置文件
+# logging.basicConfig(
+#     filename='file/lianxi.log',
+#     filemode='a',
+#     level=logging.DEBUG
+# )
+# logging.debug('This message should go to the log file')
+# logging.info('So should this')
+# logging.warning('And this, too')
+
+# 3.有多个模块在不同的文件中调用同一个 logger
+# import  logging
+# from pyfile import mylib
+#
+# def func():
+#     logging.basicConfig(
+#         filename='file/lianxi.log',
+#         filemode='a',
+#         level=logging.DEBUG
+#     )
+#     logging.info('第一个模块')
+#     mylib.do_something()
+#     logging.error('还是第一个模块')
+#
+#
+#
+# if __name__ == '__main__':
+#     func()
+
+
+# 4.多次调用同一个name 的 logger 会产生多个实例，但是引用的通一个 logger 对象，意思就是引用不同的实例名会对这个加载所有的配置。
+# 5.级别的继承：如果一个logger 对象的 level 没有显式的定义，他会去找父节点，知道找到 root。
+
+
+# 6.使用fileconfig（）配置logging 模块：
+# import logging
+# import  logging.config
+#
+# logging.config.fileConfig('file/logging.conf')
+#
+# logger=logging.getLogger('mylogger')
+#
+#
+# logger.debug('debug message')
+# logger.info('info message')
+# logger.warn('warn message')
+# logger.error('error message')
+# logger.critical('critical message')
+
+
+
+
+
+
+
+
+
+
