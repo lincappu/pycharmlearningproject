@@ -890,10 +890,8 @@ import  logging
 # if __name__ == '__main__':
 #     func()
 
-
 # 4.多次调用同一个name 的 logger 会产生多个实例，但是引用的通一个 logger 对象，意思就是引用不同的实例名会对这个加载所有的配置。
 # 5.级别的继承：如果一个logger 对象的 level 没有显式的定义，他会去找父节点，知道找到 root。
-
 
 # 6.使用fileconfig（）配置logging 模块：
 # import logging
@@ -919,3 +917,19 @@ import  logging
 
 
 
+
+
+
+
+# glob模块：
+# 查找符合特定规则的文件路径名，只是用三个特殊的字符：
+# * ? []   和正则一样。
+
+# import  glob
+from pprint import  pprint
+
+# pprint(glob.glob('/Users/FLS/Downloads/百度云盘/*.pdf'))
+
+# file=glob.iglob('/Users/FLS/Downloads/百度云盘/*.pdf')
+# for item in file:
+#     print(item)
