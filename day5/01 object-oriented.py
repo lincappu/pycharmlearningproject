@@ -49,7 +49,6 @@ print('%s的生命值现在是：%d' %(wangcai['name'],wangcai['life_value']))
 
 
 
-
 # 类： 面向对象编程
 
 # 类的定义：
