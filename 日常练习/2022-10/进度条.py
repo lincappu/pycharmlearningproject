@@ -164,6 +164,7 @@ for i ,item in enumerate(mylist):
 
 
 
+# 7、qt5这种可视化的， 可以实现在页面的进度条功能。
 
 
 
