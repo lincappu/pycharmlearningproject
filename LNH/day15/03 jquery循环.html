@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<div class="outer">
+    <p>111</p>
+    <p>222</p>
+    <p>333</p>
+</div>
+
+
+   <script src="jquery-3.2.1.min.js"></script>
+    <script>
+
+        // jquery两种循环方式
+        // 方式1：$.each(循环对象,function(){
+        //     console.log("OK")
+        // });
+
+        // var arr=[111,222,333];
+        //
+        // var info={"name":"egon","age":9000};
+        //
+        // $.each(info,function (i,j) {
+        //    console.log(i); // 下标
+        //    console.log(j); // 下标 对应的值
+        // })
+
+        // 方式2：
+        $(".outer p").each(function () {
+            console.log($(this).html())  // $(this)指的是每一次循环的对象
+        })
+
+
+
+
+    </script>
+</body>
+</html>

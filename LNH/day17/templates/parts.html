@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <h1>部门列表</h1>
+        <div style="margin: 5px 0" class="clearfix">
+            <a href="/part_add/" class="btn btn-success">添加</a>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>标题</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in depart_list %}
+                    <tr>
+                        <td>{{ obj.id }}</td>
+                        <td>{{ obj.title }}</td>
+                        <td>
+                            <a href="/part_edit/?nid={{ obj.id }}">编辑</a>
+                            |
+                            <a href="/part_del/?nid={{ obj.id }}"> 删除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

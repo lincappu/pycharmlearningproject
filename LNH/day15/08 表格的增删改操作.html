@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+          *{
+            margin: 0;
+        }
+        .shade{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: gray;
+            opacity: 0.6;
+        }
+
+        .model{
+            position: fixed;
+            left:200px;
+            top: 100px;
+            width: 600px;
+            height: 300px;
+            background-color: white;
+        }
+
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<button class="addBtn">添加</button>
+<table border="1">
+     <thead>
+           <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>班级</th>
+        <th>操作</th>
+    </tr>
+     </thead>
+
+    <tbody id="tbody">
+         <tr>
+        <td>张三</td>
+        <td>23</td>
+        <td>s19</td>
+        <td>
+            <button class="del">删除</button>
+             <button class="del">编辑</button>
+        </td>
+    </tr>
+         <tr>
+            <td>李四</td>
+            <td>23</td>
+            <td class="active">s18</td>
+            <td><button class="del">删除</button>
+                <button class="del">编辑</button>
+            </td>
+         </tr>
+         <tr>
+            <td>王五</td>
+            <td>28</td>
+            <td>s19</td>
+            <td>
+                <button class="del">删除</button>
+                <button class="del">编辑</button>
+            </td>
+         </tr>
+    </tbody>
+
+</table>
+
+<div class="shade hide"></div>
+
+<div class="model hide">
+    <h3>添加学生信息：</h3>
+    <form action="">
+        <p>姓名 <input type="text" class="item"></p>
+        <p>年龄 <input type="text" class="item"></p>
+        <p>班级 <input type="text" class="item"></p>
+        <input type="button" value="submit" id="subBtn">
+    </form>
+</div>
+
+
+
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+
+    // 删除事件
+   $(".del").click(function () {
+       console.log($(this));
+       $(this).parent().parent().remove()
+   });
+
+    //  添加事件
+    $(".addBtn").click(function () {
+          $(".shade").show();
+          $(".model").show()
+    });
+
+    //  $("#subBtn").click(function () {
+    //      // 关闭对话框
+    //      $(".shade").hide();
+    //      $(".model").hide();
+    //      // 获取用户输入值
+    //      var arr=[];
+    //      var $tr=$("<tr>");
+    //      $(".item").each(function () {
+    //          console.log($(this));
+    //          arr.push($(this).val());
+    //
+    //          $td=$("<td>");  // <td></td>
+    //          $td.html($(this).val());
+    //          $tr.append($td)
+    //      });
+    //      $tr.append('<td><button class="del">删除</button></td>');
+    //      console.log($tr[0]);
+    //
+    //      // 构建tr标签
+    //
+    //      $("#tbody").append($tr)
+    //
+    //
+    //
+    //
+    //
+    // })
+
+
+     $("#subBtn").click(function () {
+         // 关闭对话框
+         $(".shade").hide();
+         $(".model").hide();
+         // 获取用户输入值
+         var arr=[];
+
+         $(".item").each(function () {
+             console.log($(this));
+             arr.push($(this).val());
+
+         });
+         console.log(arr);
+
+         // 构建tr标签
+         s='<tr><td>'+arr[0]+'</td><td>'+arr[1]+'</td><td>'+arr[2]+'</td><td><button class="del">删除</button></td></tr>'
+         $("#tbody").append(s)
+
+
+
+
+
+    })
+</script>
+</body>
+</html>

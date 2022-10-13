@@ -1,0 +1,8 @@
+---
+- name: apply common configuratin to  all nodes
+  hosts: all
+  remote_user: root
+
+  roles:
+    - common
+

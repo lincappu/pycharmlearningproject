@@ -1,0 +1,18 @@
+---
+- name: install ntpd
+  yum: name=ntp state=present
+  tags: ntp
+
+- name: configure ntp file
+  command: echo "ok"
+  tags: ntp
+  notify: restart ntpd
+
+- name: start ntp
+  service: name=ntpd state=started enable=yes
+  tags: ntp
+
+- name: test selinux is running
+  command: getenforce
+  register: sestatus
+  changed_when: false

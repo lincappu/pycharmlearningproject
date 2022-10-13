@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<select name="" id="pro">
+    <option value="">请选择省份</option>
+    <option value="hebei">河北省</option>
+    <option value="henan">河南省</option>
+    <option value="hunan">湖南省</option>
+</select>
+<select name="" id="city">
+    <option value="">请选择城市</option>
+</select>
+
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    var data={"hebei":["石家庄","保定","廊坊"],"henan":["郑州","信阳","开封"],"hunan":["长沙","湘潭","张家界"]};
+
+    $("#pro").change(function () {
+        // console.log($(this).val());
+
+        var citys=data[$(this).val()];
+        //console.log(citys);
+
+        // 清空操作
+           console.log($("#city")[0].options.length);
+           $("#city")[0].options.length=1;
+
+        $.each(citys,function (i,j) {
+            //console.log(i,j);
+            var $option=$("<option>");
+            $option.html(j);
+            $("#city").append($option)
+        })
+    })
+</script>
+</body>
+</html>

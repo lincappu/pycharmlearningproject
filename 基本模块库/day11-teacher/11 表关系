@@ -1,0 +1,82 @@
+#多对一
+#先建被关联的表
+create table dep(
+    id int primary key auto_increment,
+    name char(64)
+);
+
+#再建。、。。
+create table emp(
+    id int primary key auto_increment,
+    name char(32),
+    dep_id int,
+    foreign key(dep_id) references dep(id)
+    on delete cascade
+    on update cascade
+);
+
+#先插部门表
+insert into dep(name) values
+('IT'),
+('HR'),
+('SALE'),
+('OPERATION')
+;
+#再插。。。。
+insert into emp(name,dep_id) values
+('egon',1),
+('alex',1),
+('mingyue',2),
+('waiawi',3),
+('dingding',3),
+('yaya',3),
+('xingxing',3),
+('yuyu',3);
+
+
+delete from emp where dep_id=1;
+
+delete from dep where id=1;
+
+
+
+#多对多
+create table book(
+    id int primary key auto_increment,
+    name char(32),
+    type char(64)
+);
+create table author(
+    id int primary key auto_increment,
+    name char(32)
+);
+
+create table author2book(
+    id int primary key auto_increment,
+    book_id int,
+    author_id int,
+    foreign key(book_id) references book(id)
+    on delete cascade
+    on update cascade,
+    foreign key(author_id) references author(id)
+    on delete cascade
+    on update cascade
+);
+
+
+#一对一
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

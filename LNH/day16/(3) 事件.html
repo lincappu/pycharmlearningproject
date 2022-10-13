@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+
+     // $(document).ready(function () {
+     //
+     // });
+
+
+     $(function () {
+
+              $("#i1").css("color","red");
+                // 双击事件
+               $("#i1").dblclick(function () {
+                    alert(123)
+                });
+                // 获取焦点，失去焦点事件
+               $("#inp").focus(function () {
+                   console.log("获取焦点")
+               });
+               $("#inp").blur(function () {
+                   console.log("失去焦点");
+               });
+                // mouse事件
+                $(".c1").mouseover(function () {
+                    console.log("悬浮DIV")
+                });
+
+                $(".c1").mouseleave(function () {
+                    console.log("离开DIV")
+                });
+
+                // select事件
+                $("#inp").select(function () {
+                    console.log("......")
+                });
+
+                // change事件
+
+                 $("#pro").change(function () {
+
+                });
+
+                // submit事件：
+                 $("#form").submit(function () {
+
+                     //alert(123);
+                     var val=$("[name='user']").val();
+                     if (val.length<5){
+                         // alert("长度不够！");
+                         $("[name='user']").next().html("长度不够");
+
+                         return false; // 终止后续事件
+                     }
+
+                 })
+
+     })
+
+
+        
+    </script>
+</head>
+<body>
+
+
+<div id="i1">DIV</div>
+<input type="text" id="inp">
+
+<div class="c1" style="width: 100px;height: 100px;background-color: gray"></div>
+<hr>
+
+
+<form action="" id="form">
+
+    <p>用户名<input type="text" name="user"><span class="error"></span></p>
+    <p>密码<input type="text" name="pwd"><span class="error"></span></p>
+    <p><input type="submit" value="提交"></p>
+
+</form>
+
+
+
+
+
+
+</body>
+</html>

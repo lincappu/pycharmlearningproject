@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<div class="c1">DIV1</div>
+<p>PPP</p>
+<p>PPP</p>
+<span id="i1">Span</span>
+
+
+<script>
+    // Dom对象-------标签对象
+    var ele1=document.getElementById("i1");  // Dom对象
+    console.log(ele1);
+
+    var ele_p=document.getElementsByTagName("p");  // [Dom1,Dom2,....]
+    var ele2=document.getElementsByClassName("c1"); // [Dom1,]
+
+    var $ele1=$("#i1")   //  juqery对象：永远是一个集合
+
+
+
+    //  Dom 转换成jquery对象:  $(Dom)
+
+    // Jquery对象转换成Dom对象： $()[0]
+
+    /*
+    *
+    *
+         $ele1[0]
+         <span id=​"i1">​Span​</span>​
+         $ele1[0].innerText
+        "Span"
+    *
+    *
+    * */
+
+
+</script>
+</body>
+</html>

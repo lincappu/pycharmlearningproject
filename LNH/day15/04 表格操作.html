@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button class="select_all">全选</button>
+<button class="cancel">取消</button>
+<button class="reverse">反选</button>
+<hr>
+<table border="1">
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>张三</td>
+        <td>23</td>
+        <td>s5</td>
+    </tr>
+        <tr>
+        <td><input type="checkbox"></td>
+        <td>李四</td>
+        <td>23</td>
+        <td>s5</td>
+    </tr>
+        <tr>
+        <td><input type="checkbox"></td>
+        <td>王五</td>
+        <td>23</td>
+        <td>s8</td>
+    </tr>
+</table>
+
+
+<script src="jquery-3.2.1.min.js"></script>
+
+<script>
+    
+    // 全选事件
+    $(".select_all").click(function () {
+        //  方式1：
+        // $(":checkbox").each(function () {
+        //     $(this).prop("checked",true)
+        // })
+
+        // 方式2
+        $(":checkbox").prop("checked",true)
+
+    });
+
+    // 取消事件
+    $(".cancel").click(function () {
+
+         $(":checkbox").prop("checked",false)
+    });
+    
+    // 反选事件
+    
+    $(".reverse").click(function () {
+        $(":checkbox").each(function () {
+
+           // if($(this).prop("checked")){
+           //     $(this).prop("checked",false)
+           // }
+           // else {
+           //      $(this).prop("checked",true)
+           // }
+
+            // 方式2：
+            $(this).prop("checked",!$(this).prop("checked"))
+
+        })
+    })
+</script>
+</body>
+</html>

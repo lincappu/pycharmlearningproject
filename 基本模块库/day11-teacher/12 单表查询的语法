@@ -1,0 +1,113 @@
+#1、单表查询语法
+select distinct 字段1,字段2,... from 表
+    where 约束条件
+    group by 分组字段
+    having 过滤条件
+    order by 排序字段
+    limit 显示条数
+    ;
+
+
+#2、基本查询
+select * from emp;
+select id from emp;
+select id,name from emp;
+select name as 姓名,salary*12 as 年薪 from emp;
+
+
+
+select distinct post from emp;
+
+
+
+select concat('姓名: ',name,' ','年薪',salary*12) from emp;
+select concat_ws(':',name,salary*12) from emp;
+
+#3、约束条件where
+select * from emp where post='teacher';
+select * from emp where post='teacher' and salary > 8000;
+select * from emp where post='teacher' and salary > 8300 and salary < 10000;
+select * from emp where salary between 8300 and 10000;
+select * from emp where salary in (8300,10000,12000);
+select * from emp where salary not in (8300,10000,12000);
+
+
+select * from emp where name like '程咬_';
+select * from emp where name like '程__';
+select * from emp where name like '__';
+
+select * from emp where name like '程%';
+select * from emp where name regexp '^程.*$';
+
+
+select * from emp where post_comment is null;
+select * from emp where post_comment is not null;
+
+
+#4、分组group by
+select post,max(salary) from emp group by post;
+select post,min(salary) from emp group by post;
+select post,avg(salary) from emp group by post;
+select post,sum(salary) from emp group by post;
+select post,count(id) from emp group by post;
+
+select sex,count(id) from emp group by sex;
+
+
+
+select post,group_concat(name) from emp group by post;
+
+
+
+
+
+select post,max(salary) from emp where age > 20 group by post;
+select max(salary) from emp;
+select count(id) from emp;
+select * from emp where id > 1;
+
+select count(id) from emp;
+
+
+
+
+
+#平均工资超过10000的部门
+
+
+select post,avg(salary) as avg_num from emp group by post having avg(salary) > 150000;
+
+
+
+
+
+select post,avg(salary) as avg_num from emp group by post having avg(salary) > 1000;
+
+select post,avg(salary) as avg_num from emp group by post having avg(salary) > 1000
+order by avg(salary) asc;
+
+
+select post,avg(salary) as avg_num from emp group by post having avg(salary) > 1000
+order by avg(salary) desc;
+
+
+select post,avg(salary) as avg_num from emp group by post having avg(salary) > 1000
+order by avg_num desc;
+
+
+
+
+
+select * from emp order by age,salary desc;
+
+
+select * from emp order by id desc limit 3;
+select * from emp limit 0,20;
+select * from emp limit 20,20;
+select * from emp limit 40,20;
+
+
+
+
+
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+        *{
+            margin: 0;
+        }
+        .c1{
+            width: 100%;
+            height: 2000px;
+            background-color: darkgrey;
+
+        }
+
+        .returnTop{
+            width: 100px;
+            height: 46px;
+            background-color: darkcyan;
+            color: white;
+            text-align: center;
+            line-height: 46px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+                }
+
+
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="c1">
+    <h1>yuan</h1>
+</div>
+
+<div class="returnTop hide">返回顶部</div>
+
+
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    // 返回顶部事件
+    $(".returnTop").click(function () {
+
+      $(window).scrollTop(0)
+
+    });
+
+    // 监听滚动条的位置
+
+    $(window).scroll(function () {
+
+       console.log($(window).scrollTop());
+        var $current_position=$(window).scrollTop()
+
+        if($current_position>200){
+
+           $(".returnTop").show()
+        }
+        else {
+             $(".returnTop").hide()
+        }
+    })
+
+
+
+
+
+</script>
+</body>
+</html>

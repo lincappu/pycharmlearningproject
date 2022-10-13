@@ -1,0 +1,12 @@
+文件夹：库
+
+文件：表（字段就是表的标题）
+
+一行内容：记录
+
+数据库管理软件：MySQL，Oracle，Sql server，DB2
+
+数据库服务器: 安装有数据库管理软件的一台机器
+
+
+yum install mysql-server mysql

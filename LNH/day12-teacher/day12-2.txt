@@ -1,0 +1,54 @@
+
+
+python 基础
+网络编程
+
+数据库
+前端基础（html css JS(Jquery)） 3day
+
+
+
+web框架
+Django框架
+  基础知识      ----  3day
+  博客系统开发  ----  2day
+  
+
+  
+  
+html:
+
+     html标签格式:  
+	    <标签名 属性1=“属性值1” 属性2=“属性值2”……>内容部分</标签名>
+        <标签名 属性1=“属性值1” 属性2=“属性值2”…… />
+  
+    
+	标签分类：
+	     块级标签   h1-h6 p  hr  div ul ol li
+		 内联标签   b strong em a img span 
+  
+
+    关于：
+	      块级标签可以嵌套块级和内敛标签 p标签例外
+	      内敛标签只能嵌套内敛标签
+		  
+		  块级标签可以设置长宽
+    
+
+form:
+     表单标签
+               input系列 
+               select
+               textarea			   
+CSS： 
+   渲染 布局
+   
+   
+作业：
+    
+	1、表格操作
+	2、注册页面
+	3、http://www.cnblogs.com/yuanchenqi/articles/6856399.html
+
+
+

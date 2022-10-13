@@ -1,0 +1,93 @@
+#not null default
+create table t10(name char(16) not null default "aaaa");
+insert into t10 values();
+
+
+
+#key
+
+#一张表只能有一个？
+#为何一张innodb表必须有一个主键？
+#干什么用？
+#primary key：not null unique
+
+create table t13(
+    id int not null unique,
+    name char(10) not null unique
+    );
+
+
+create table t14(
+    id int primary key,
+    name char(10) not null unique
+    );
+
+
+#unique:唯一
+create table t11(id int unique,name char(16));
+insert into t11 values
+(1,'alex'),
+(1,'egon');
+
+
+create table t12(
+    id int,
+    name char(16),
+    unique(id)
+);
+insert into t12 values
+(1,'alex'),
+(1,'egon');
+
+
+#联合唯一
+    联合主键
+    联合唯一
+
+create table service(
+    id int primary key auto_increment,
+    host char(32),
+    port int,
+    unique(host,port)
+);
+
+insert into service(host,port) values
+('1.1.1.1',3306),
+('1.1.1.2',3306);
+
+#foreign key
+
+
+
+#index
+
+
+
+
+#auto_increment
+create table t15(id int primary key auto_increment);
+
+
+set global auto_increment_offset=3; #初始的偏移量为2
+set global auto_increment_increment=4; #步长为2
+
+create table t16(id int primary key auto_increment);
+insert into t16 values
+(),
+(),
+();
+
+set global auto_increment_offset=1; #初始的偏移量为2
+set global auto_increment_increment=1; #步长为2
+
+
+
+
+
+
+
+
+
+
+
+

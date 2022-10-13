@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+    <style>
+        #i3{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+
+<p class="c1 c2" id="i1" egon="9000">this is P</p>
+<p id="i3">this is P</p>
+
+<input type="checkbox" >
+
+<script>
+    // 取某一个属性的值
+    $(".c1").attr("id");
+    $(".c1").attr("egon");
+
+    // 赋值操作
+     $(".c1").attr("id","i2");
+     $(".c1").attr("egon",9999);
+   // css的样式操作
+   $("#i3").click(function () {
+       // $(this).css("color","red");
+       $(this).css({"color":"red","fontSize":"32px"})
+   })
+
+</script>
+</body>
+</html>

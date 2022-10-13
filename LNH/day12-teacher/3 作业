@@ -1,0 +1,58 @@
+#20、查询每门课程成绩最好的前两名学生姓名
+select * from score order by course_id,num desc;
+
+
+#取第一高
+select course_id,max(num) first_score from score group by course_id;
+
+
+#查出把每们课程最高分去掉的表
+
+select * from score as t1 inner join
+(select course_id,max(num) first_score from score group by course_id) as t2
+on t1.course_id = t2.course_id
+where t1.num < t2.first_score
+;
+
+#取第二高
+select t1.course_id,max(num) second_score from score as t1 inner join
+(select course_id,max(num) first_score from score group by course_id) as t2
+on t1.course_id = t2.course_id
+where t1.num < t2.first_score
+group by t1.course_id
+;
+
+#取第一个高和第二高的
+select table1.course_id,table1.first_score,table2.second_score from
+(select course_id,max(num) first_score from score group by course_id ) as table1
+inner join
+(
+select t1.course_id,max(num) second_score from score as t1 inner join
+(select course_id,max(num) first_score from score group by course_id) as t2
+on t1.course_id = t2.course_id
+where t1.num < t2.first_score
+group by t1.course_id
+) as table2
+on table1.course_id = table2.course_id;
+
+
+
+
+#最终结果
+select score.course_id,score.student_id from score inner join
+(
+select table1.course_id,table1.first_score,table2.second_score from
+(select course_id,max(num) first_score from score group by course_id ) as table1
+inner join
+(
+select t1.course_id,max(num) second_score from score as t1 inner join
+(select course_id,max(num) first_score from score group by course_id) as t2
+on t1.course_id = t2.course_id
+where t1.num < t2.first_score
+group by t1.course_id
+) as table2
+on table1.course_id = table2.course_id
+) as table3
+on score.course_id = table3.course_id
+where score.num >= table3.second_score
+order by course_id;

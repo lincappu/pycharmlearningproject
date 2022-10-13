@@ -1,0 +1,27 @@
+1 笛卡尔积
+select * from dep,emp;
+
+select * from dep,emp where dep.id = emp.dep_id;
+
+
+2 内连接inner join
+select * from dep inner join emp
+    on dep.id = emp.dep_id;
+
+3 左连接left join
+select * from dep left join emp
+    on dep.id = emp.dep_id;
+
+
+4 右连接right join
+select * from dep right join emp
+    on dep.id = emp.dep_id;
+
+5 全连接full join
+select * from dep left join emp
+    on dep.id = emp.dep_id
+union
+select * from dep right join emp
+    on dep.id = emp.dep_id;
+
+

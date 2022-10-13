@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <h1>{{ "asdfasdf"|upper }}</h1>
+
+    <h1>{{ k1 }}</h1>
+    <h1>{{ k2.2 }}</h1>
+    {% for item in k2 %}
+        <a href="#">{{ item }}</a>
+    {% endfor %}
+
+    <h1>{{ k3.age }}</h1>
+
+    {% for k,v in k3.items %}
+        <a href="#">{{ k }}  {{ v }}</a>
+    {% endfor %}
+
+    {% if k1 == 123 %}
+        <h1>下课</h1>
+    {% else %}
+        <h1>放学</h1>
+    {% endif %}
+
+</body>
+</html>

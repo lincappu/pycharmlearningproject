@@ -1,0 +1,104 @@
+#1、视图：虚拟表，只有表结构，没有数据（来自于其他表）
+
+create view course_to_teacher_view as
+select course.*,teacher.tname from course inner join teacher
+    on course.teacher_id=teacher.tid;
+
+
+alter view course_to_teacher_view as
+select course.*,teacher.tname from course inner join teacher
+    on course.teacher_id=teacher.tid;
+
+
+drop view course_to_teacher_view;
+
+
+#2:触发器
+delimiter $$
+create trigger tri_after_insert_cmd after insert on cmd for each row
+begin
+    if (NEW.success = "no")then
+        insert into errlog(err_cmd,err_time) values(NEW.cmd,NEW.sub_time);
+    end if;
+
+end $$
+delimiter ;
+
+
+#3:事务
+
+create table user(
+id int primary key auto_increment,
+name char(32),
+balance int
+);
+
+insert into user(name,balance)
+values
+('wsb',1000),
+('egon',1000),
+('ysb',1000);
+
+
+
+start transaction;
+update user set balance=900 where id=1;
+update user set balance=1010 where id=2;
+update user set balance=1090 where id=3;
+
+rollback;
+commit;
+
+
+
+
+#4:存储过程
+delimiter $$
+create procedure auto_insert1()
+begin
+    declare n int default 1;
+    while (n<=10)do
+        insert into user(name,balance) values(concat('egon',n),n);
+        set n=n+1;
+    end while;
+
+end $$
+delimiter ;
+
+#mysql
+call auto_insert1();
+
+
+
+
+delimiter $$
+create procedure proc1(
+    in n int,
+    out res int
+)
+begin
+    select * from user where id > n;
+    set res=0;
+end $$
+delimiter ;
+
+#mysql
+set @n=3;
+set @res=111;
+call proc1(@n,@res);
+
+
+
+#pymysql
+
+
+
+
+
+
+
+select date_format(sub_time,'%Y-%m'),count(id) from blog group by date_format(sub_time,'%Y-%m');
+
+
+
+

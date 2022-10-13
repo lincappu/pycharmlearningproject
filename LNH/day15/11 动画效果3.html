@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .c1{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="c1"></div>
+
+<hr>
+<button class="xianshi">显示</button>
+<button class="yincang">隐藏</button>
+<button class="qiehuan">切换</button>
+<script src="jquery-3.2.1.min.js"></script>
+
+<script>
+    $(".xianshi").click(function () {
+
+       $(".c1").fadeIn(2000)
+
+    });
+
+     $(".yincang").click(function () {
+       $(".c1").fadeOut(2000)
+    });
+
+      $(".qiehuan").click(function () {
+      // $(".c1").fadeToggle(2000)
+      // $(".c1").fadeTo(2000,0.2)
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<div class="c1" alex="123">DIV</div>
+
+<div class="c2">
+    <span>123</span>
+</div>
+
+
+
+<select name="" id="s1">
+    <option value="1">111</option>
+    <option value="2">222</option>
+    <option value="3">333</option>
+</select>
+
+
+<script>
+    // （1）文本操作
+            // 取值操作
+            // console.log($(".c1").html());
+            // console.log($(".c1").text());
+            //
+            // console.log($(".c2").html());
+            // console.log($(".c2").text());
+
+            // 赋值操作
+            //$(".c2").html("文本赋值");
+            //$(".c2").text("文本赋值");
+
+            // $(".c2").text("<a>click</a>");
+            // $(".c2").html("<a href=''>click</a>");
+
+    // （2）属性操作
+    //  $('.c1').attr("alex");
+    //  $('.c1').attr("alex",456)
+
+    // class操作
+    //   $(".c1").addClass("c2");
+    //   $(".c1").removeClass("c1");
+
+   // value操作
+   //   console.log($("#s1").val());
+   // 节点操作
+
+    // 创建节点对象
+     var $img=$("<img>");
+     $img.attr("src","egg.jpg");
+     console.log($img[0]);
+
+     //添加节点
+
+       // $('.c2').append($img);
+       // $('.c2').prepend($img);
+       // $('.c2').after($img)
+
+      // 删除节点：
+      // $("#s1").remove()
+
+    // 替换节点
+        // $('.c2').replaceWith($img);
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

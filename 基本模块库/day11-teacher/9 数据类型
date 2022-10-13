@@ -1,0 +1,197 @@
+数字类型
+    整型：年龄，身份证号，ID号，等级
+        tinyint
+        int
+        bigint
+    浮点型：薪资，身高体重，体质参数
+        float
+        double
+
+        decimal
+
+
+字符类型
+    名字，描述性的信息
+    char
+    varchar
+
+时间类型
+    date:2017-01-27
+    time:11:11:11
+    datetime:2017-01-27 11:11:11
+    timestamp:2017-01-27 11:11:11
+    year:2017
+
+枚举类型
+    enum('male','female','mf')
+    set('play','read','sleep',)
+
+
+
+
+=========================整型验证=======================
+create database db3;
+use db3;
+
+#整型默认是有符号
+create table t1(id int(1));
+
+insert into t1 values(-1);
+insert into t1 values(2147483647);
+insert into t1 values(2147483648); #报错
+
+指定无符号
+create table t2(id int(1) unsigned);
+
+insert into t2 values(-1);
+insert into t2 values(4294967295);
+insert into t2 values(4294967296);
+
+
+#整型的宽度指的是显示宽度，不是存储宽度
+
+create table t3(id int(10));
+insert into t3 values(2147483647);
+insert into t3 values(2147483648); #报错
+
+alter table t3 modify id int(10) zerofill;
+mysql> select * from t3;
++------------+
+| id         |
++------------+
+| 2147483647 |
+| 0000000001 |
++------------+
+2 rows in set (0.00 sec)
+alter table t3 modify id int(1) zerofill;
+mysql> select * from t3;
++------------+
+| id         |
++------------+
+| 2147483647 |
+|          1 |
++------------+
+2 rows in set (0.00 sec)
+
+
+
+create table t4(id int);
+
+=========================浮点验证=======================
+create table t5(salary float(255,30));
+create table t6(salary double(255,30));
+
+create table t7(salary decimal(65,30));
+
+insert into t5 values(1.1111111111111111111111111111111);
+insert into t6 values(1.1111111111111111111111111111111);
+insert into t7 values(1.1111111111111111111111111111111);
+
+mysql> select * from t5;
++----------------------------------+
+| salary                           |
++----------------------------------+
+| 1.111111164093017600000000000000 |
++----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from t6;
++----------------------------------+
+| salary                           |
++----------------------------------+
+| 1.111111111111111200000000000000 |
++----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from t7;
++----------------------------------+
+| salary                           |
++----------------------------------+
+| 1.111111111111111111111111111111 |
++----------------------------------+
+1 row in set (0.00 sec)
+
+
+
+=========================字符类型验证=======================
+char(5)
+a    |aa   |aaa  |
+
+varchar(5)
+
+1bytes+a|1bytes+aa|1bytes+aaa
+
+
+
+create table t8(x char(5));
+create table t9(x varchar(5));
+
+
+insert into t8 values('a'); #'a    '
+insert into t9 values('a'); #'a'
+
+
+select char_length(x) from t8; #'a    '
+select char_length(x) from t9; #'a'
+
+mysql> set sql_mode='PAD_CHAR_TO_FULL_LENGTH';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select char_length(x) from t8; #'a    '
++----------------+
+| char_length(x) |
++----------------+
+|              5 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select char_length(x) from t9; #'a    '
++----------------+
+| char_length(x) |
++----------------+
+|              1 |
++----------------+
+1 row in set (0.00 sec)
+
+
+
+select * from t8 where x='a    ';
+select * from t8 where x='a';
+
+select * from t8 where x like 'a    ';
+
+
+
+=========================日期类型验证=======================
+
+时间类型
+    date:2017-01-27
+    time:11:11:11
+    datetime:2017-01-27 11:11:11
+    timestamp:2017-01-27 11:11:11
+    year:2017
+
+
+
+create table student(
+    id int,
+    name char(16),
+    birth date,
+    class_time time,
+    reg_time datetime,
+    born_year year
+);
+
+insert into student values
+(1,'egon',now(),now(),now(),now());
+
+insert into student values
+(2,'alex','2017/01/02','11:11:11','2017-01-02 11:11:11',1973);
+
+=========================枚举类型验证=======================
+
+
+
+
+
+

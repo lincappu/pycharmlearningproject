@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+
+<div class="c1">
+    <div class="title">菜单1</div>
+    <div class="con">
+        <p>111</p>
+        <p>111</p>
+        <p>111</p>
+    </div>
+</div>
+<hr>
+<button class="xianshi">显示</button>
+<button class="yincang">隐藏</button>
+<button class="qiehuan">切换</button>
+<script src="jquery-3.2.1.min.js"></script>
+
+<script>
+    $(".xianshi").click(function () {
+
+       $(".con").slideDown(2000)
+
+    });
+
+     $(".yincang").click(function () {
+       $(".con").slideUp(2000)
+    });
+
+      $(".qiehuan").click(function () {
+       $(".con").slideToggle(1000)
+    });
+</script>
+</body>
+</html>

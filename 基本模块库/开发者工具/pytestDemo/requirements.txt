@@ -1,0 +1,5 @@
+pytest==6.2.5
+PyMySQL==1.0.2
+allure-pytest==2.9.45
+requests==2.25.1
+PyYAML==5.3.1

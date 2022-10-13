@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+
+<div class="outer">
+    <span class="num">23</span>
+</div>
+<button>click</button>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    $("button").click(function () {
+
+        var $val=$(".outer .num").html();
+        $(".outer .num").html(parseInt($val)+1);
+
+    })
+</script>
+</body>
+</html>

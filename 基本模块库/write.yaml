@@ -1,0 +1,5 @@
+mysql:
+  database: testdb
+  host: localhost
+  password: admin123
+  user: root

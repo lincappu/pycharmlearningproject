@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .outer{
+            width: 400px;
+            height: 300px;
+            background-color: darkgrey;
+        }
+    </style>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<div class="outer">
+
+    <h4>hello world</h4>
+    <p>123</p>
+    <p>456</p>
+    <p>789</p>
+
+</div>
+
+<hr>
+<button class="add">Add</button>
+<button class="del">删除</button>
+<button class="set">替换</button>
+
+<script>
+
+     // 添加节点操作
+    $(".add").click(function () {
+        // 创建一个img标签对象
+
+        var $img=$("<img>");    //   <img>
+        $img.attr("src","egg.jpg");
+
+        console.log($img[0]);
+
+        // 添加到指定节点中： $(父标签).append(添加的子标签)
+
+       // $(".outer").append($img);
+       // $img.appendTo(".outer")
+        $(".outer").after($img)
+
+    });
+
+    // 删除节点操作
+    $(".del").click(function () {
+        $(".outer").remove()
+        //$(".outer").empty()     // empty 清空
+    });
+
+    // 替换节点
+    $(".set").click(function () {
+        var $img=$("<img>");    //   <img>
+        $img.attr("src","egg.jpg");
+        $(".outer p").eq(1).replaceWith($img)
+
+    });
+
+    // 拷贝节点
+    var $copy=$(".outer").clone();
+    console.log($copy[0])
+
+
+</script>
+</body>
+</html>

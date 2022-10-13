@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .c1,.c2{
+            width: 200px;
+            height: 200px;
+        }
+        .c1{
+            background-color: darkgrey;
+        }
+        .c2{
+            background-color: cadetblue;
+        }
+        .c3{
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="c1"></div>
+<div class="c3"><div class="c2"></div></div>
+
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    // 获取偏移量
+    // console.log($(".c1").offset().left);
+    // console.log($(".c1").offset().top);
+    console.log($(".c2").offset().left);
+    console.log($(".c2").offset().top);
+
+
+    console.log($(".c2").position().left);
+    console.log($(".c2").position().top);   // 不可以设置
+
+    // 设置偏移量
+    //$(".c2").offset({top:200,left:200})
+
+</script>
+</body>
+</html>

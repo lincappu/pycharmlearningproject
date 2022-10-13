@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+
+<div class="style_box">
+    <div class="item">
+        <button class="add">+</button><input type="text">
+    </div>
+
+</div>
+
+<script>
+    //  添加事件
+    $(".item .add").click(function () {
+
+        var $clone=$(this).parent().clone();
+        $clone.children(".add").html("-").attr("class","del");
+
+        $(".style_box").append($clone);
+
+    });
+
+    // 删除事件(事件委派)
+
+    $(".style_box").on("click",".del",function () {
+
+        console.log($(this));
+
+        $(this).parent().remove()
+    })
+</script>
+</body>
+</html>

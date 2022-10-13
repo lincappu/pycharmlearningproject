@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <style>
+        /*后代选择器*/
+       /*.c1 .c3{*/
+            /*color: red;*/
+        /*}*/
+
+        /*子代选择器*/
+        /*.c1>.c3{*/
+            /*background-color: lightslategrey;*/
+        /*}*/
+
+        /*毗邻选择器*/
+        /*.c1+p{*/
+            /*color: palevioletred;*/
+        /*}*/
+
+        /*兄弟选择器*/
+        /*.c1~p{*/
+            /*color: goldenrod;*/
+        /*}*/
+
+        /* 与条件选择器 */
+        /*span.d1{*/
+            /*background-color: palevioletred;*/
+        /*}*/
+
+        /*class可以拥有多个值，每个值通过空格隔开*/
+        /*.c1{*/
+            /*color: rebeccapurple;*/
+        /*}*/
+
+        /*.c2{*/
+            /*background-color: lightslategrey;*/
+        /*}*/
+
+
+        div,span{
+            color: red;
+            font-size: 32px;
+            background-color: lightslategrey;
+            font-weight: 300;
+        }
+
+    </style>
+</head>
+<body>
+
+<!--<div class="c1">-->
+    <!--<p class="c3">P1</p>-->
+    <!--<p>P3</p>-->
+    <!--<div>-->
+        <!--<span class="c3">span</span>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<span>span</span>-->
+<!--<p class="c3">P2</p>-->
+<!--<p class="c3">P3</p>-->
+
+
+<hr>
+
+
+<!--<span>span2</span>-->
+<!--<div class="d1">DIV</div>-->
+<!--<span class="d1">span</span>-->
+
+<hr>
+
+<!--<div class="c1 c2">DIV</div>-->
+
+
+<hr>
+
+<!--<div>DIV</div>-->
+<!--<span>span</span>-->
+
+</body>
+</html>

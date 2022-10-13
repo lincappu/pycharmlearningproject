@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+
+<div class="c1">DIV</div>
+<button class="xianshi">显示</button>
+<button class="yincang">隐藏</button>
+<button class="qiehuan">切换</button>
+<script src="jquery-3.2.1.min.js"></script>
+
+<script>
+    $(".xianshi").click(function () {
+        // $(".c1").removeClass("hide")
+       $(".c1").show(1000);
+
+    });
+
+     $(".yincang").click(function () {
+
+         $(".c1").hide(1000);
+    });
+
+       $(".qiehuan").click(function () {
+
+         $(".c1").toggle(1000)
+    });
+</script>
+</body>
+</html>

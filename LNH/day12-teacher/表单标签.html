@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<h3>注册页面</h3>
+
+<form action="" method="post">
+    <p>
+        <label for="user">姓名：</label>
+        <input type="text" name="user" value="yuan" id="user">
+    </p>
+    <p>密码：<input type="password" name="pwd" value="123"></p>
+
+    <p>爱好：<input type="checkbox" name="hobby" value="lanqiu" checked>篮球
+            <input type="checkbox" name="hobby" value="zuqiu">足球
+            <input type="checkbox" name="hobby" value="shuangsqiu">双色球
+    </p>
+    <p>
+        性别：<input type="radio" name="gender" value="male">男
+             <input type="radio" name="gender" value="female">女
+             <input type="radio" name="gender" value="egon">其他
+           
+    </p>
+    <p>
+        <input type="button" value="按钮" onclick="alert(123)">
+    </p>
+    <p>
+        <input type="reset">
+    </p>
+    <p>
+        头像：<input type="file" name="avatar">
+    </p>
+    <p>
+        <input type="hidden" name="egon" value="is_dog">
+    </p>
+
+    <!--===============================select-->
+
+    <select name="pro" size="3" multiple>
+        <option value="1">河北省</option>
+        <option value="2">河南省</option>
+        <option value="3" selected="selected">山东省</option>
+    </select>
+
+
+    <p>个人简介：
+        <textarea name="person" id="" cols="80" rows="10"></textarea>
+    </p>
+
+
+
+    <p><input type="submit" value="submit"></p>
+
+
+</form>
+
+
+{"user":"yuan","pwd":"123","hobby":[lanqiu,zuqiu]，"gender":"male"，"avatar":"","egon":"is_dog，"pro":"2"}
+
+</body>
+</html>

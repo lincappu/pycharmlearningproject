@@ -1,0 +1,65 @@
+#查询平均年龄在25岁以上的部门名
+select name from dep where id in
+(select dep_id from emp group by dep_id having avg(age) > 25);
+
+#查看技术部员工姓名
+select name from emp where dep_id=(
+select id from dep where name='技术'
+);
+
+#查看<=1人的部门名
+select name from dep where id in (
+select dep_id from emp group by dep_id having count(id) <= 1
+);
+
+
+#查询大于所有人平均年龄的员工名与年龄
+#select name,age from emp where age > 所有人的平均年龄;
+
+
+select name,age from emp where age > (
+select avg(age) from emp
+);
+
+#查询大于部门内平均年龄的员工名、年龄
+select * from emp as t1 inner join
+(select dep_id,avg(age) avg_age from emp group by dep_id) as t2
+on t1.dep_id = t2.dep_id
+where t1.age > t2.avg_age
+;
+
+
+select * from dep where exists
+(select * from dep where name='技术');
+
+
+#查询每个部门最新入职的员工
+select t1.name,t1.hire_date,t2.* from emp as t1 inner join
+(
+select post,max(hire_date) max_date from emp group by post
+) as t2
+on t1.post = t2.post
+where t1.hire_date = t2.max_date
+;
+
+
+
+
+
+
+
+#sql关键字的优先级
+select distinct 字段1，字段2,... from 左表 left join 右表
+    on 链表条件
+    where 约束条件
+    group by 字段
+    having 过滤条件
+    order by 排序字段
+    limit n;
+
+egon@5565487
+
+
+
+
+

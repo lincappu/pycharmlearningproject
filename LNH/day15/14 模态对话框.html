@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .backend{
+            width:100%;
+            height: 2000px;
+            background-color: lightblue;
+        }
+        *{
+            margin: 0;
+        }
+        .shade{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: gray;
+            opacity: 0.6;
+        }
+
+        .model{
+            position: fixed;
+            left:200px;
+            top: 100px;
+            width: 600px;
+            height: 300px;
+            background-color: white;
+        }
+
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="backend">
+ <button>注册</button>
+</div>
+
+<div class="shade hide"></div>
+
+<div class="model hide">
+    <h3>添加学生信息：</h3>
+    <form action="">
+        <p>姓名 <input type="text"></p>
+        <p>年龄 <input type="text"></p>
+        <p>班级 <input type="text"></p>
+        <input type="button" value="submit" id="subBtn">
+    </form>
+</div>
+
+
+<script src="jquery-3.2.1.min.js"></script>
+
+<script>
+    $("button").click(function () {
+        $(".shade").show();
+        $(".model").show()
+    });
+
+    $("#subBtn").click(function () {
+         $(".shade").hide();
+         $(".model").hide()
+    })
+
+
+</script>
+</body>
+</html>

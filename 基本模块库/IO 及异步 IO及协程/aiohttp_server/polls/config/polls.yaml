@@ -1,0 +1,6 @@
+mysql:
+  database: aiohttpdemo_polls
+  user: root
+  password: renhe2020
+  host: 47.110.87.5
+  port: 3306

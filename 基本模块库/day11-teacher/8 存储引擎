@@ -1,0 +1,14 @@
+create database db2;
+
+use db2;
+
+create table t1(x char(4))engine=innodb;
+create table t2(x char(4))engine=myisam;
+create table t3(x char(4))engine=blackhole;
+create table t4(x char(4))engine=memory;
+
+
+insert into t1 values('aaa');
+insert into t2 values('aaa');
+insert into t3 values('aaa');
+insert into t4 values('aaa');

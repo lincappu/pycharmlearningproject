@@ -1,0 +1,72 @@
+
+
+文件夹：库
+    增
+        create database db1 charset utf8;
+    查
+        show databases;
+        show create database db1;
+    改
+        alter database db1 charset latin1;
+    删
+        drop database db1;
+
+
+文件：表
+    切换文件夹（库）：use db1：
+    select database(); #查看当前所在的库
+
+    增
+        create table t1(
+            id int,
+            name char
+        )engine=innodb;
+    查
+        show create table t1;
+        show tables;
+        desc t1;
+    改
+        alter table t1 add age int;
+        alter table t1 drop age;
+        alter table t1 modify name char(4);
+        alter table t1 change name xxxx char(4);
+    删
+        drop table t1;
+
+一行内容：记录
+    增
+        insert into db1.t1 values
+        (1,'a'),
+        (2,'e'),
+        (3,'w');
+
+        insert into db1.t1(name,id) values
+        ('c',4);
+
+        insert into db1.t1(name) values
+        ('d');
+    查
+        select * from t1;
+        select name from t1;
+    改
+        update t1 set name='A';
+        update t1 set name='S' where id=3;
+    删
+        delete from t1 where id >=2 and id < 4; #删某几条记录就用delete
+
+        删除整张表所有记录
+        delete from t1; #不要用
+        要用
+        truncate t2;
+
+
+        create table t2(id int primary key auto_increment,name char(16));
+        insert into t2(name) values
+        ('alex1'),
+        ('alex2'),
+        ('alex3'),
+        ('alex4'),
+        ('alex5');
+
+查看帮助：
+    help create
