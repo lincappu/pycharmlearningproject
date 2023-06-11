@@ -1,0 +1,24 @@
+<!--<form method="post">-->
+<!--    {{ form.csrf_token }} &lt;!&ndash;csrf-token&ndash;&gt;<br>-->
+<!--    {{ form.username.label }} <br>-->
+<!--    {{form.username()}}<br>-->
+<!--    {% for message in form.username.errors %}-->
+<!--        <small class="error">{{ message }}</small>-->
+<!--    {% endfor %}-->
+<!--    {{ form.password.label }} <br>-->
+<!--    {{form.password}}<br>-->
+<!--    {% for message in form.password.errors %}-->
+<!--        <small class="error">{{message}}</small>-->
+<!--    {% endfor %}-->
+<!--    {{ form.remember(checked='')}} {{form.remember.label}}&lt;!&ndash;remember&ndash;&gt;<br>-->
+<!--    {{ form.submit }} <br>-->
+<!--</form>-->
+
+{%  from  'macros.html' import form_field %}
+<form method="post">
+    {{ form.csrf_token }}<br>
+    {{ form_field(form.username) }}<br>
+    {{ form_field(form.password) }}<br>
+    {{ form.remember(checked='')}} {{form.remember.label}}<!--remember--><br>
+    {{ form.submit }} <br>
+</form>

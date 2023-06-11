@@ -1,0 +1,3 @@
+FLASK_APP=bbs
+FLASK_ENV=development
+DEBUG_TB_INTERCEPT_REDIRECTS = False

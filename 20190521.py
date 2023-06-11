@@ -760,7 +760,6 @@ import json
 
 #########常用模块##########
 
-
 ####logging 日志模块：
 import logging
 #
@@ -929,7 +928,7 @@ import logging
 #     load_my_logging_cfg()
 #
 #
-#
+
 # # 调用:
 #
 # # logging.getLogger(__name__)，不同的文件__name__不同，这保证了打印日志时标识信息不同，但是拿着该名字去loggers里找key名时却发现找不到，
@@ -2431,9 +2430,9 @@ import sys
 
 
 
-# from django import template
-# t=template.Template('my name is {{name}}')
-# c=template.Context({'name':'fls'})
+# from django import templates
+# t=templates.Template('my name is {{name}}')
+# c=templates.Context({'name':'fls'})
 # print(t.render(c))
 
 class CLanguage() :

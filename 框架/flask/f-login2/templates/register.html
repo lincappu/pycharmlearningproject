@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="post" action="" xmlns="http://www.w3.org/1999/html">
+    <p>{{ form.csrf_token }}</p>
+        <p>
+        {{ form.ids.label }}
+        {{ form.ids(size=32) }}<br>
+        {% for error in form.ids.errors %}
+        <span style="color: red;">{{ error }} </span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.username.label }}
+        {{ form.username(size=32) }}<br>
+        {% for error in form.username.errors %}
+        <span style="color: red;">{{ error }} </span>
+        {% endfor %}
+    </p>
+
+    <p>
+        {{ form.password.label }}
+        {{ form.password(size=32) }}<br>
+        {% for error in form.password.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.password2.label }}
+        {{ form.password2(size=32) }}<br>
+        {% for error in form.password2.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.submit() }}
+    </p>
+
+</form>
+
+
+{% endblock %}

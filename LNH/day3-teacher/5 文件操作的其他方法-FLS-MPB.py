@@ -29,7 +29,7 @@
 
 
 #0:文件开头
-# 1：当前位置
+#1：当前位置
 #2:文件末尾
 # with open('a.txt','r',encoding='utf-8') as f:
 #     f.seek(3,0)

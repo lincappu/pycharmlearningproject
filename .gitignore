@@ -33,7 +33,7 @@ wheels/
 MANIFEST
 
 # PyInstaller
-#  Usually these files are written by a python script from a template
+#  Usually these files are written by a python script from a templates
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
@@ -110,4 +110,3 @@ venv.bak/
 # mypy
 .mypy_cache/
 日常练习/practice.py
-!/常用模块库/互联网数据处理/email电子邮件和 MIME 处理包.py

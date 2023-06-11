@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {#  块标题  #}
+    <title>{% block title %}
+        首页
+    {% endblock %}</title>
+    {#块样式，使用bootstrap.load_css()加载bootstrap的css资源#}
+    {% block mystyle %}{{ bootstrap.load_css() }}{% endblock %}
+
+</head>
+<body>
+{#块导航栏#}
+{% block navbar %}
+{% endblock %}
+
+{#块内容#}
+{% block concent %}
+{% endblock %}
+
+{#块JavaScript ，使用bootstrap.load_js()加载bootstrap的JavaScript资源#}
+{% block scripts %}{{ bootstrap.load_js() }}{% endblock %}
+
+{#块底部内容#}
+{% block footer %}
+{% endblock %}
+</body>
+</html>

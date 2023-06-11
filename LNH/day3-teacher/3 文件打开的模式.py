@@ -65,8 +65,6 @@ with open('d.txt', mode='ab') as f:
 
 
 
-
-
 #了解部分
 # print(f.readable())
 # print(f.writable())

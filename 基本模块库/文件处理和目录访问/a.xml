@@ -1,0 +1,11 @@
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="关联关系XML Schema-3.0.xsd" License="">
+  <Events version="3.0">
+    <Event name="RelationCreate">
+      <Relation productCode="06970593810109" subTypeNo="06970593810109" cascade="1" packageSpec="50人份/盒" comment="" linkProductCode="" assCorpCode="">
+        <Batch batchNo="N0530001" madeDate="2022-05-30" validateDate="2023-05-29" workshop="无" lineName="无" lineManager="无">
+            <Code curCode="010697059381010910N053000117230527" packLayer="1" parentCode="" flag="0" />
+         </Batch>
+      </Relation>
+    </Event>
+  </Events>
+</Document>

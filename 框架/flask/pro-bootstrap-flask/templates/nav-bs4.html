@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/nav.html'  import render_nav_item,render_breadcrumb_item  %}
+{% block title %}  bootstrap-flask的导航栏 {% endblock %}
+
+{% block navbar %}
+{% raw %}
+render_nav_item的用法： render_nav_item(连接的处理函数, 显示的文本)：</br>
+{{ render_nav_item('test_form', 'Form') }}</br>
+{{ render_nav_item('test_nav', 'Nav') }}</br>
+{{ render_nav_item('test_pagination', 'Pagination') }}</br>
+{{ render_nav_item('test_static', 'Static') }}</br>
+{{ render_nav_item('test_flash', 'Flash Messages') }}</br>
+
+
+{% endraw %}
+
+<h2>Render Navbar item with render_nav_item</h2></br>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto">
+            {{ render_nav_item('test_nav', 'Nav') }}
+            {{ render_nav_item('test_form', 'Form') }}
+        </div>
+    </div>
+
+</nav>
+{% endblock %}

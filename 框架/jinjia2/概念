@@ -1,0 +1,60 @@
+jinja2之所以被广泛使用是因为它具有以下优点：
+    相对于Template，jinja2更加灵活，它提供了控制结构，表达式和继承等。
+    相对于Mako，jinja2仅有控制结构，不允许在模板中编写太多的业务逻辑。
+    相对于Django模板，jinja2性能更好。
+    Jinja2模板的可读性很棒。
+
+
+Flask中jinjia2的使用：
+
+    像其他功能一样，要使用模板引擎，先引入
+    from flask import render_template
+    注意： 要将将模板文件放置在项目根目录(即print(__file__)显示的路径)下的 templates文件夹中
+
+    Flask提供的render_template 函数把Jinja2模板引擎集成到了程序中。
+    render_template函数第一个参数是模板的文件名，随后的参数都是键值对，表示模板中变量的对应的真实值，在上面代码中，模板会接收到一个名name的变量
+
+
+
+
+
+1、jinjia2其实是模板语言，本身没有文件格式，html、xml、csv、latex都可以、
+2、模板包含：变量、表达式、注释
+    变量用来替换值  {{}}
+        {{foo.bar}}: 先属性、项、未定义对象
+        {{foo['bar']}}  先项、属性、未定义对象
+    表达式用来控制逻辑  {%  %}
+    注释：
+        块注释 {# #}
+        行注释 ##
+        # 表示行语句
+
+过滤器： {{变量|过滤器}}  链式调用
+内置过滤器：
+    safe	渲染时值不转义
+    capitialize	把值的首字母转换成大写，其他子母转换为小写
+    lower	把值转换成小写形式
+    upper	把值转换成大写形式
+    title	把值中每个单词的首字母都转换成大写
+    trim	把值的首尾空格去掉
+    striptags	渲染之前把值中所有的HTML标签都删掉
+    join	拼接多个值为字符串
+    replace	替换字符串的值
+    round	默认对数字进行四舍五入，也可以用参数进行控制
+    int	把值转换成整型
+
+空白控制：
+    默认是对空白不做修改
+    trim_blocks:手动移除块前后的空白
+        {% for item in seq -%}
+            {{ item }}
+        {%- endfor %}
+
+控制接口：
+    if-elif-else-endif
+    for-endfor
+
+继承：
+
+
+

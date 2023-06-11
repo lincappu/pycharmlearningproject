@@ -1,0 +1,31 @@
+<html>
+<head>
+    <object id=closes type="application/x-oleobject"
+            　 classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+        <param name="Command" value="Close">
+    </object>
+</head>
+
+<body>
+
+    {% for user in users %}
+    <div class="note">
+        <p> {{ user.username }}</p>
+    </div>
+
+    {% endfor %}
+
+<table border=1>
+
+    <thead>
+    <tr>
+        <th>username
+    <tbody>
+    {%- for user in users %}
+    <tr>
+        <td>{{ user.username }}
+    </tr>
+    {%- endfor %}
+</table>
+</body>
+</html>

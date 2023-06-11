@@ -18,7 +18,7 @@ print(p)
 a=u'你好'
 b='祖国'
 
-with open('../基本模块库/文件处理/c.txt', 'w') as f :
+with open('../基本模块库/文件处理和目录访问/c.txt', 'w') as f :
     f.write(a)
     f.write(b)
 

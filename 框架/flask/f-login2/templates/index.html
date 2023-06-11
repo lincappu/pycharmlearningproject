@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Hello, {{ current_user.id }}!</h1>
+{% if current_user.is_authenticated %}
+<a href="{{ url_for('logout')}}">Logout</a>
+{% else %}
+<a href="{{ url_for('login') }}">Login</a>
+{%endif %}
+{% endblock %}

@@ -441,7 +441,7 @@ class DiffFile():
 
         #为了生成html能识别中文，可用下面代码 #修改diff.html的编码，将ISO-8859-1改为UTF-8
         q = self.d.make_file(tfile1_lines, tfile2_lines)
-        with open('../基本模块库/文件处理/diff.html', 'w') as f_new:
+        with open('../基本模块库/文件处理和目录访问/diff.html', 'w') as f_new:
             f_new.write(q.replace(self.old_str, self.new_str))
 
 if __name__ == '__main__':

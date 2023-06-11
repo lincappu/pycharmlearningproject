@@ -51,7 +51,6 @@ logger=logging.getLogger()
 # 2.filter对象
 # 一般不用
 
-
 # 3.handler 对象，负责接收 logger 对象的信息，控制打印到终端或者文件
 # h1=loggin   g.FileHandler('t1.log')
 # h2=logging.FileHandler('t2.log')

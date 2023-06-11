@@ -24,11 +24,11 @@ import glob
 # 返回一个 iterator，它会产生与 glob() 相同的结果，但不会实际地同时保存它们。
 #
 # glob.escape(pathname)
-# 转义所有特殊字符 ('?', '*' 和 '[')。 这适用于当你想要匹配可能带有特殊字符的任意字符串字面值的情况。 在 drive/UNC 共享点中的特殊字符不会被转义，例如在 Windows 上 escape('//?/c:/Quo vadis?.txt') 将返回 '//?/c:/Quo vadis[?].txt'。
+# 转义所有特殊字符 ('?', '*' 和 '[')。 这适用于当你想要匹配可能带有特殊字符的任意字符串字面值的情况。 在 drive/UNC 共享点中的特殊字符不会被转义，例如在 Windows 上 escape('//?/c:/Quo vadis?1.txt') 将返回 '//?/c:/Quo vadis[?]1.txt'。
 
 
 
-# 注意：glob 默认不匹配.开头的文件,如果有.开头的文件需要写成 glob.glob(".*.txt") 的格式
+# 注意：glob 默认不匹配.开头的文件,如果有.开头的文件需要写成 glob.glob(".*1.txt") 的格式
 
 
 
@@ -47,7 +47,7 @@ for file in glob.iglob('./*.py',recursive=True):
 specials = '?*['
 
 for char in specials:
-    pattern = '**/*' + glob.escape(char) + '.txt'
+    pattern = '**/*' + glob.escape(char) + '1.txt'
     print('Searching for: {!r}'.format(pattern))
     for name in sorted(glob.glob(pattern,recursive=True)):
         print(name)

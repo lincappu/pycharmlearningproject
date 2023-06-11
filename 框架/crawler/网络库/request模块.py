@@ -3,8 +3,6 @@
 # __author__：FLS
 import  requests
 
-
-
 # 1.get方法
 # r=requests.get('http://www.baidu.com')
 # print(type(r))

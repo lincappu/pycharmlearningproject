@@ -15,6 +15,7 @@ import os
 # os.mkdir('dirname')    生成单级目录；相当于shell中mkdir dirname
 # os.rmdir('dirname')    删除单级空目录，若目录不为空则无法删除，报错；相当于shell中rmdir dirname
 # os.listdir('dirname')    列出指定目录下的所有文件和子目录，包括隐藏文件，并以列表方式打印
+# os.walk('dirname')
 # os.remove()  删除一个文件
 # os.removedirs()  删除多个目录,就是级联删除
 # os.rename("oldname","newname")  重命名文件/目录
@@ -51,15 +52,15 @@ print(os.ctermid())
 print(os.environ['HOME'])  # 一个表示字符串环境的 mapping 对象
 
 
-os.close(fd)  # 必须是用 os.open()打开的文件
-os.fsync(fd)  # 刷入磁盘
-os.ftruncate(fd,length=) # 将文件截断
-os.read(fd)
-os.write()
+# os.close(fd)  # 必须是用 os.open()打开的文件
+# os.fsync(fd)  # 刷入磁盘
+# os.ftruncate(fd,length=) # 将文件截断
+# os.read(fd)
+# os.write()
 
 # 文件和目录：
-os.access(path=) # 测试uid 和 gid是否可访问文件
-os.chmod()  #
+# os.access(path=) # 测试uid 和 gid是否可访问文件
+# os.chmod()  #
 
 
 

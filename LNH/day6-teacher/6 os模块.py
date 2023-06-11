@@ -3,9 +3,9 @@ import os
 # res=os.system('tasklist')
 # print('==========================?>',res)
 
-# print(os.path.split(r'a\b\c\d.txt') )
-# print(os.path.dirname(r'a\b\c\d.txt') )
-# print(os.path.basename(r'a\b\c\d.txt') )
+# print(os.path.split(r'a\b\c\d1.txt') )
+# print(os.path.dirname(r'a\b\c\d1.txt') )
+# print(os.path.basename(r'a\b\c\d1.txt') )
 
 
 # print(os.stat(r'C:\Users\Administrator\PycharmProjects\19期\day6\soft\conf\settings.py.py').st_size)
@@ -17,11 +17,7 @@ import os
 
 # print(os.path.normpath('c://windows\\System32\\../Temp/') )
 #
-#
-#
-#
-#
-#
+
 # x=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # print(x)
 #

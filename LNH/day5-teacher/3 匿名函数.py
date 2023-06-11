@@ -12,9 +12,15 @@
 #
 # lambda n:n**2
 
+'''
+匿名函数即没有绑定名字的函数，没有绑定名字，意味着只能用一次就会被回收
+所以说匿名函数的应用场景就是：某个功能只用一次就结束了
+lambda [arg1 [,arg2....argn]]:expression
+冒号前面是的形参，实参可以在后面加（）传入，也可以在调用的时候传入。
+匿名函数不需要return来返回值， 表达式本身就是返回值，
+'''
 
-#匿名函数即没有绑定名字的函数，没有绑定名字，意味着只能用一次就会被回收
-#所以说匿名函数的应用场景就是：某个功能只用一次就结束了
+
 
 
 salaries={
@@ -63,7 +69,7 @@ salaries={
 
 
 
-#map,reduce,filter
+# 将lambda函数做参数传给其他函数  map,reduce,filter， 这个和列表推导式很像
 # l=['alex','wupeiqi','yuanhao','huanghongwei']
 # print(list(map(lambda x:x+'_SB',l)))
 
@@ -72,9 +78,7 @@ salaries={
 
 
 l=['alex_SB','wupeiqi_SB','yuuanhao_SB','hhw','egon']
-
 res=filter(lambda name:name.endswith('SB'),l)
-
 print(list(res))
 
 

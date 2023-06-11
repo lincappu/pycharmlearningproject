@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block page_content %}
+  {{nav.top.render()}}
+  {{nav.top.render(renderer='just_div')}}
+  <h1>{{msg|default('Welcome')}}</h1>
+{% endblock %}

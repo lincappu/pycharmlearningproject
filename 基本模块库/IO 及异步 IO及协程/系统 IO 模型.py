@@ -74,7 +74,6 @@ with open('1.log','r',encoding='utf-8') as f:
 # llinecache 模块 指定文件中的某一行
 # fnmatch  匹配指定文件名模式的文件
 
-
 # tempfile模块。 TemporaryFile()这个方法生成的临时文件没有文件名，不要进行寻找。
 
 

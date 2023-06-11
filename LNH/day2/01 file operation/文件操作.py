@@ -115,7 +115,7 @@
 #     print line,
 #
 # 第三种：
-# f = open("c:\\1.txt","r")
+# f = open("c:\\11.txt","r")
 # lines = f.readlines()      #读取全部内容 ，并以列表方式返回
 # for line in lines
 #     print line
@@ -141,7 +141,9 @@
 # a 追加写模式,不存在则创建，存在则追加
 # f=open('test.txt','a',encoding='utf8')
 # f.write('777\n')
+# writelines  列表形式的多行一次性写入
 # f.writelines(['888\n','999\n'])
+
 # print(f.writable())
 #
 
@@ -211,7 +213,8 @@
 #     print(f.tell())
 #     print(msg)
 # 上面这三个只有在文本模式下才是字符，其余都是字节
-# f.flush() # 写一行刷新一行
+
+# f.flush() # 写一行刷新一行，直接刷到硬盘上
 
 
 # f.cose()

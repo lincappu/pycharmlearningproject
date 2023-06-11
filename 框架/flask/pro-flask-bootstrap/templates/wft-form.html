@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block page_content %}
+    <h2>编辑Note</h2>
+    <form class="form-horizontal" method="POST">
+        {{ wtf.form_csrf_token }}<br>
+        {{ wtf.form_field(form.body)}}
+        {{ wtf.form_field(form.submit)}}
+    </form>
+{% endblock %}

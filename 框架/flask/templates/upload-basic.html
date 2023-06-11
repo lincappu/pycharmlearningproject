@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %} UPLOAD {% endblock %}
+
+{% block page_content %}
+    <div>
+        <h1>文件上传实例 </h1>
+    </div>
+    <form action="/api/upload" method="POST" enctype="multipart/form-data">
+        <div>
+            <input type="file" name="myfile" id="File1"><br>
+            <input type="submit">上传</input>
+        </div>
+    </form>
+{% endblock %}
