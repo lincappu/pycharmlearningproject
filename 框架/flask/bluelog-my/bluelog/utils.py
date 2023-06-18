@@ -22,7 +22,8 @@ def is_safe_url(target):
     return target_url.scheme in ('http', 'https') and ref_url.netloc == target_url.netloc
 
 
-def redirect_back(default='blog.index', **kwargs):
+# def redirect_back(default='blog.index', **kwargs):
+def redirect_back(default='auth.index', **kwargs):
     for target in request.args.get('next'), request.referrer:
         if not target:
             continue

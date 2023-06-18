@@ -9,8 +9,7 @@
 from  faker  import Faker
 
 from extensions import db
-
-from models import Admin
+from models import Admin,Category,Post,Comment,Link
 
 fake=Faker()
 
@@ -26,6 +25,14 @@ def fake_admin():
     admin.password="helloflask"
     db.session.add(admin)
     db.session.commit()
+
+def fake_category(count=10):
+    category=Category(name='Default')
+    db.session.add(category)
+
+    for i in range(count):
+        category=Category(name=fake.word)
+
 
 
 

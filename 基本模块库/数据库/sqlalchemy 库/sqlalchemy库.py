@@ -3,7 +3,7 @@
 # __author__：FLS
 
 
-from sqlalchemy import Column, String, Integer, create_engine
+from sqlalchemy import Column, String, Integer, create_engine,MetaData
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
@@ -26,25 +26,25 @@ class Teacher(base):
         return tpl.format(self.id, self.name, self.age, self.city)
 
 
-# # 第二种方式：模式申明，通过__table__来映射
-# metadata = MetaData()
-# user=Table('user', metadata,
-#            Column('id', Integer, primary_key=True),
-#            Column('name', String(50)),
-#            Column('fullname', String(50)),
-#            Column('password', String(12))
-#            )
-#
-# class User(object):
-#     def __init__(self, name, fullname, password):
-#         self.name = name
-#         self.fullname = fullname
-#         self.password = password
-#
-# mapper(User,user)
+# 第二种方式：模式申明，通过__table__来映射
+metadata = MetaData()
+user=Table('user', metadata,
+           Column('id', Integer, primary_key=True),
+           Column('name', String(50)),
+           Column('fullname', String(50)),
+           Column('password', String(12))
+           )
+
+class User(object):
+    def __init__(self, name, fullname, password):
+        self.name = name
+        self.fullname = fullname
+        self.password = password
+
+mapper(User,user)
 
 # MetaData 创建表到数据库中
-# Teacher.metadata.create_all(engine)
+Teacher.metadata.create_all(engine)
 
 
 # 将当前的引擎帮定给这个会话，

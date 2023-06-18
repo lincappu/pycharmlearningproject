@@ -36,7 +36,6 @@ from huaweicloudsdkeip.v2.region.eip_region import EipRegion
 urllib3.disable_warnings()
 
 
-
 failure=0
 
 # 查询服务器的既有的弹性ip地址
