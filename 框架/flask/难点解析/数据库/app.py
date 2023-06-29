@@ -19,7 +19,6 @@ back_populates 显示定义关系  backref隐试的定义关系
 
 '''
 
-
 # 1、一对多 是基础
 # class Author(db.Model):
 #     __tablename__='author'
@@ -136,7 +135,6 @@ back_populates 显示定义关系  backref隐试的定义关系
 #     author=db.relationship('author',back_populates='articles')
 
 
-
 # 6、事件监听
 # 针对db的操作设置监听机制，不同的事件类型：set append  remove  init_scalar  init_collect
 # 修改一次body  edit_time+1
@@ -151,7 +149,6 @@ back_populates 显示定义关系  backref隐试的定义关系
 #         target.edit_time+=1
 
 
-
 # 7、邻接列表关系： 就是在一个表内进行的一对多的关系，
 # 下面是一个评论的模型，因为评论还有回复，所以就出现了在单表内连接的情况，
 # 原理按照一对多的模型：需要一个外键和双向关系，这里面核心就是分清，哪个是一，哪个是多，
@@ -159,28 +156,28 @@ back_populates 显示定义关系  backref隐试的定义关系
 # from werkzeug import secure_filename
 
 
-
-
 import os
 from datetime import timedelta
 
-from flask_ckeditor import CKEditorField,CKEditor
-from flask_bootstrap  import Bootstrap
+from flask_ckeditor import CKEditorField, CKEditor
+from flask_bootstrap import Bootstrap
 from flask_moment import Moment
-from flask import Flask,redirect,url_for,render_template,request,flash
+from flask import Flask, redirect, url_for, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
-from  flask_migrate import Migrate
+from flask_migrate import Migrate
 from datetime import datetime
-from flask_wtf import FlaskForm,CSRFProtect
-from wtforms import StringField,SubmitField,TextAreaField
-from wtforms.validators import DataRequired,Length,Email,URL,Optional
+from flask_wtf import FlaskForm, CSRFProtect
+from wtforms import StringField, SubmitField, TextAreaField
+from wtforms.validators import DataRequired, Length, Email, URL, Optional
 
 # 表单导入
 
 app = Flask(__name__)
 
+basedir = os.path.abspath((os.path.dirname(__file__)))
+
 app.secret_key = 'aaabbbccc'
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:Lexin2022@127.0.0.1:3306/sqltest"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data-dev.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['MAX_CONTENT_LENGTH'] = 3 * 1024 * 1024
 app.config['UPLOAD_PATH'] = os.path.join(app.root_path, 'uploads')
@@ -199,27 +196,25 @@ app.config.update(
     MAIL_DEFAULT_SENDER=('Grey Li', os.getenv('MAIL_USERNAME')),
 )
 
-
-
-bootstrap=Bootstrap()
+bootstrap = Bootstrap()
 bootstrap.init_app(app)
-moment=Moment()
+moment = Moment()
 moment.init_app(app)
 db = SQLAlchemy(app)
-migrate=Migrate(app,db)
-csrf=CSRFProtect()
+migrate = Migrate(app, db)
+csrf = CSRFProtect()
 csrf.init_app(app)
-ckeditor=CKEditor()
+ckeditor = CKEditor()
 ckeditor.init_app(app)
 
 
 class Post(db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    titie=db.Column(db.String(60))
-    body=db.Column(db.Text)
-    timestamp=db.Column(db.DateTime,default=datetime.utcnow(),index=True)
-    can_comment = db.Column(db.Boolean,default=True)
-    comments=db.relationship('Comment',back_populates='post',cascade='all,delete-orphan')
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(60))
+    body = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow(), index=True)
+    can_comment = db.Column(db.Boolean, default=True)
+    comments = db.relationship('Comment', back_populates='post', cascade='all,delete-orphan')
 
 
 class Comment(db.Model):
@@ -230,13 +225,12 @@ class Comment(db.Model):
     body = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow, index=True)
 
-    post_id=db.Column(db.Integer,db.ForeignKey('post.id'))
-    post=db.relationship('Post',back_populates='comments')
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+    post = db.relationship('Post', back_populates='comments')
 
     replied_id = db.Column(db.Integer, db.ForeignKey('comment.id'))  # 这个是一
     replies = db.relationship('Comment', back_populates='replied', cascade='all, delete-orphan')
     replied = db.relationship('Comment', back_populates='replies', remote_side=[id])  # 用remote_side来定义远端，那么replied_id就是本地端。
-
 
 
 # 下面的例子用来专门演示这个邻接列表关系。
@@ -247,59 +241,128 @@ class CommentForm(FlaskForm):
     body = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField()
 
+
 class PostForm(FlaskForm):
-    title=StringField('Title',validators=[DataRequired(),Length(1,20)])
-    body=CKEditorField('Body',validators=[DataRequired()])
+    title = StringField('Title', validators=[DataRequired(), Length(1, 20)])
+    body = CKEditorField('Body', validators=[DataRequired()])
     submit = SubmitField()
 
 
 @app.route('/')
 def index():
-    page=request.args.get('page',1,type=int)
-    per_page=10
+    page = request.args.get('page', 1, type=int)
+    per_page = 10
     # 这个是先过滤条件，后查询条件，
-    pagination=Comment.query.order_by(Comment.timestamp.desc()).paginate(page=page,per_page=per_page)
-    comments=pagination.items
-    return render_template('index.html',comments=comments,pagination=pagination)
+    pagination = Comment.query.order_by(Comment.timestamp.desc()).paginate(page=page, per_page=per_page)
+    comments = pagination.items
+    return render_template('index.html', comments=comments, pagination=pagination)
 
 
-@app.route('/add_comment',methods=['POST','GET'])
+@app.route('/add_comment', methods=['POST', 'GET'])
 def add_comment():
-    form=CommentForm()
+    form = CommentForm()
     if form.validate_on_submit():
-        author=form.author.data
-        email=form.email.data
-        site=form.site.data
-        body=form.body.data
-        comment=Comment(author=author,email=email,site=site,body=body)
+        author = form.author.data
+        email = form.email.data
+        site = form.site.data
+        body = form.body.data
+        comment = Comment(author=author, email=email, site=site, body=body)
         db.session.add(comment)
         db.session.commit()
         return redirect(url_for('index'))
-    return render_template('add_comment.html',form=form)
+    return render_template('add_comment.html', form=form)
 
 
-
-@app.route('/comment/<int:comment_id>',methods=['POST','GET'])
+@app.route('/comment/<int:comment_id>/delete', methods=['POST'])
 def delete_comment(comment_id):
-    comment=Comment.query.get_or_404(comment_id)
+    comment = Comment.query.get_or_404(comment_id)
     db.session.delete(comment)
     db.session.commit()
     flash('Comment delete')
     return redirect(url_for('index'))
 
 
-@app.route('/add_post',methods=['POST','GET'])
+@app.route('/post/<int:post_id>/set_post', methods=['POST'])
+def set_comment(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.can_comment:
+        post.can_comment = False
+        flash('this post comment is disable')
+    else:
+        post.can_comment = True
+        flash('this post commen is enable')
+    db.session.commit()
+    return redirect(url_for('man_posts'))
+
+
+@app.route('/add_post', methods=['POST', 'GET'])
 def add_post():
-    form=PostForm()
-    if form.validate_on_submit()
-        title=form.title.data
-        body=form.body.data
-        post=Post(title=title,body=body)
+    form = PostForm()
+    if form.validate_on_submit():
+        title = form.title.data
+        body = form.body.data
+        post = Post(title=title, body=body)
         db.session.add(post)
         db.session.commit()
         flash('post create.')
-        return redirect(url_for('show_post',post_id=post.id))
-    return render_template('add_post.html',form=form)
+        return redirect(url_for('index'))
+    return render_template('add_post.html', form=form)
+
+
+@app.route('/post/<int:post_id>', methods=['GET', 'POST'])
+def show_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    page = request.args.get('page', 1, type=int)
+    per_page = 10
+    # 通过post_id来查对用得comments的方法
+    pagination = Comment.query.with_parent(post).order_by(Comment.timestamp.desc()).paginate(page=page, per_page=per_page)
+    comments = pagination.items
+
+    form = CommentForm()
+    if form.validate_on_submit():
+        author = form.author.data
+        email = form.email.data
+        site = form.site.data
+        body = form.body.data
+        comment = Comment(author=author, email=email, site=site, body=body, post=post)
+
+        replied_id = request.args.get('reply')
+        if replied_id:
+            replied_comment = Comment.query.get_or_404(replied_id)
+            comment.replied = replied_comment
+        db.session.add(comment)
+        db.session.commit()
+        return redirect(url_for('show_post', post_id=post.id))
+
+    return render_template('post.html', post=post, pagination=pagination, comments=comments, form=form)
+
+
+@app.route('/reply/comment/<int:comment_id>')
+def reply_comment(comment_id):
+    commnet = Comment.query.get_or_404(comment_id)
+    if not commnet.post.comments:
+        flash('Comment is disable')
+    #前端接收参数的规则，第一个参数是？ 后面都是#，post_id是填充了url中。
+    return redirect(url_for('show_post', post_id=commnet.post_id, reply=commnet.id, author=commnet.author) + '#comment-form')
+
+
+@app.route('/man_posts', methods=['GET'])
+def man_posts():
+    page = request.args.get('page', 1, type=int)
+    per_page = 10
+    # 这个是先过滤条件，后查询条件，
+    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page=page, per_page=per_page)
+    posts = pagination.items
+    return render_template('man_posts.html', posts=posts, pagination=pagination)
+
+
+@app.route('/post/<int:post_id>/delete', methods=['POST'])
+def delete_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Post deleted.', 'success')
+    return redirect(url_for('index'))
 
 
 # with app.app_context():
@@ -339,6 +402,9 @@ def add_post():
 #
 #     db.create_all()
 
+# with app.app_context():
+#     db.drop_all()
+#     db.create_all()
 
 
 if __name__ == '__main__':
